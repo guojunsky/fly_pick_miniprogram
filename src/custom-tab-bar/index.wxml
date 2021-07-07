@@ -1,0 +1,18 @@
+<view class="tab_container" style="padding-bottom:{{tabBottomHeight}}px;">
+	<view class="tab_item {{tab == 0 ? 'active' : ''}}" data-page="/pages/pickup/index" data-index="{{0}}" bindtap="handlerTab">
+		<image src="{{tab == 0 ? '/static/index/pick_active.png' : '/static/index/pick.png'}}" class="tab_img"></image>
+		<view class="tab_name">取货</view>
+	</view>
+	<view class="tab_item {{tab == 1 ? 'active' : ''}}" data-page="/pages/index/index" data-index="{{1}}" bindtap="handlerTab">
+		<image src="{{tab == 1 ? '/static/index/send_active.png' : '/static/index/send.png'}}" class="tab_img"></image>
+		<view class="tab_name">代客下单</view>
+	</view>
+	<view class="tab_item {{tab == 2 ? 'active' : ''}}" data-page="/pages/check/index" data-index="{{2}}" bindtap="handlerTab" wx:if="{{lgType != 3}}">
+		<image src="{{tab == 2 ? '/static/index/search_active.png' : '/static/index/search.png'}}" class="tab_img"></image>
+		<view class="tab_name">查件</view>
+	</view>
+	<view class="tab_item {{tab == 3 ? 'active' : ''}}" data-page="/pages/mine/index" data-index="{{3}}" bindtap="handlerTab">
+		<image src="{{tab == 3 ? '/static/index/mine_active.png' : '/static/index/mine.png'}}" class="tab_img"></image>
+		<view class="tab_name">我的</view>
+	</view>
+</view>

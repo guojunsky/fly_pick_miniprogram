@@ -1,0 +1,109 @@
+[
+  {
+    "url": "com.sendatek.sp.api.account.apis.service.ChinaAddressListApi",
+    "response": {
+      "ret_code": "string",
+      "ret_msg": "string",
+      "list": [
+        {
+          "id": "string",
+          "createAt": 0,
+          "name": "王小1",
+          "phone": "string",
+          "ext": "string",
+          "province": "string",
+          "city": "string",
+          "town": "string",
+          "areaCode": 0,
+          "addr": "天府五街",
+          "postalCode": "string",
+          "companyName": "string",
+          "defaultAt": 1
+        },
+        {
+          "id": "string",
+          "createAt": 0,
+          "name": "王小2",
+          "phone": "string",
+          "ext": "string",
+          "province": "string",
+          "city": "string",
+          "town": "string",
+          "areaCode": 0,
+          "addr": "天府五街",
+          "postalCode": "string",
+          "companyName": "string",
+          "defaultAt": 0
+        }
+      ]
+    }
+  },
+  {
+    "url": "com.sendatek.sp.api.account.apis.service.AbroadAddressListApi",
+    "response": {
+      "ret_code": "string",
+      "ret_msg": "string",
+      "list": [
+        {
+          "id": "string",
+          "createAt": 0,
+          "name": "Smith John",
+          "phone": "string",
+          "ext": "string",
+          "province": "string",
+          "city": "string",
+          "town": "string",
+          "areaCode": 0,
+          "addr": "Texa Floresville 1137 Watson Lane",
+          "postalCode": "string",
+          "companyName": "string",
+          "defaultAt": 1
+        }
+      ]
+    }
+  },
+  {
+    "url": "com.sendatek.sp.api.account.apis.service.ChinaAddressGetApi",
+    "response": {
+      "ret_code": "string",
+      "ret_msg": "string",
+      "address": {
+        "id": "string",
+        "createAt": 0,
+        "name": "string",
+        "phone": "string",
+        "ext": "string",
+        "province": "string",
+        "city": "string",
+        "town": "string",
+        "areaCode": 0,
+        "addr": "string",
+        "postalCode": "string",
+        "companyName": "string",
+        "defaultAt": 0
+      }
+    }
+  },
+  {
+    "url": "com.sendatek.sp.api.account.apis.service.AbroadAddressGetApi",
+    "response": {
+      "ret_code": "string",
+      "ret_msg": "string",
+      "abroadAddress": {
+        "id": "string",
+        "createAt": 0,
+        "name": "string",
+        "phone": "string",
+        "ext": "string",
+        "province": "string",
+        "city": "string",
+        "town": "string",
+        "areaCode": 0,
+        "addr": "string",
+        "postalCode": "string",
+        "companyName": "string",
+        "defaultAt": 0
+      }
+    }
+  }
+]

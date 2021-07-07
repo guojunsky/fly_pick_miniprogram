@@ -1,0 +1,30 @@
+[{
+	"url": "com.sendatek.sp.api.product.apis.CommentListApi",
+	"response": {
+		  "ret_code": "0000",
+		  "ret_msg": "msg",
+		  "list|10": [
+		      {
+		        "id": "@id",
+		        "createAt": 1611410743000,
+		        "content": "@cword(10)",
+		        "pid": "@id",
+		        "serviceStar|1": [1,2,3,4,5],
+		        "effectiveStar|1": [1,2,3,4,5],
+		        "securityStar|1": [1,2,3,4,5],
+		        "star|1": [1,2,3,4,5],
+		        "orderId": "@id",
+				"nickname": "@cword(5)",
+				"avatar":"@image",
+				"urlList":["@image","@image","@image","@image","@image"]
+		      }
+		    ],
+			"nextCursor": 10
+	}
+},{
+	"url": "com.sendatek.sp.api.product.apis.CommentApi",
+	"response": {
+		  "ret_code": "0000",
+		  "ret_msg": "评论成功"
+	}
+}]

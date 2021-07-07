@@ -1,0 +1,370 @@
+[
+  {
+    "url": "com.sendatek.sp.api.product.apis.ProductPriceApi",
+    "response": {
+      "ret_code": "string",
+      "ret_msg": "string",
+      "productVO": {
+        "id": "string",
+        "createAt": 0,
+        "supplierBase": {
+          "id": "string",
+          "createAt": 0,
+          "no": "string",
+          "name": "string",
+          "type": 0,
+          "nature": 0,
+          "productNumber": 0,
+          "dispatcherId": "string",
+          "stores": [
+            null
+          ],
+          "level": 0,
+          "recommendScore": 0,
+          "tagIds": [
+            "string"
+          ],
+          "protectionPeriod": 0
+        },
+        "supplierId": "string",
+        "dispatcher": "string",
+        "star": 0,
+        "serviceStar": 0,
+        "effectiveStar": 0,
+        "securityStar": 0,
+        "name": "string",
+        "tags": [
+          "string"
+        ],
+        "tagIds": [
+          "string"
+        ],
+        "commentCount": 0,
+        "totalPrice": 10,
+        "coupons": [
+          {
+            "id": "string",
+            "createAt": 0,
+            "expireType": 2,
+            "expireBeginAt": 0,
+            "expireEndAt": 0,
+            "expireTime": 0,
+            "type": 1,
+            "usingTimes": 0,
+            "sourcePrice": 10000,
+            "eachPrice": 0,
+            "reducePrice": 100,
+            "maxPrice": 0,
+            "discount": 0,
+            "usingScope": 1,
+            "usingId": "string",
+            "notes": "string",
+            "totalCount": 0,
+            "leftCount": 0,
+            "leftWarnCount": 0,
+            "notifyEmail": "string",
+            "weightStart": 0,
+            "weightEnd": 0,
+            "needBuy": 0
+          }
+        ],
+        "validTime": 0,
+        "weightDetailVO": {
+          "chargeWeight": 100,
+          "volumeWeight": 100,
+          "weight": 100,
+          "goodsType": 1,
+          "countChargeWeight": "100",
+          "countVolumeWeight": "100",
+          "countWeight": [
+            0
+          ],
+          "overWeightCount": 1,
+          "overLengthCount": 1,
+          "weightRuleId": "string"
+        },
+        "price": 0,
+        "freightPrice": 0,
+        "priceDetails": [
+          {
+            "id": "string",
+            "createAt": 0,
+            "title": "string",
+            "formula": "string",
+            "type": 1,
+            "price": 0,
+            "processingFree": 0,
+            "totalPrice": 10,
+            "commission": 0,
+            "commissionType": 0,
+            "pppid": "string",
+            "ppid": "string",
+            "ppidDetailId": "string",
+            "dispatcher": "string"
+          },
+          {
+            "id": "string",
+            "createAt": 0,
+            "title": "string",
+            "formula": "string",
+            "type": 2,
+            "price": 20,
+            "processingFree": 0,
+            "totalPrice": 0,
+            "commission": 0,
+            "commissionType": 0,
+            "pppid": "string",
+            "ppid": "string",
+            "ppidDetailId": "string",
+            "dispatcher": "string"
+          },
+          {
+            "id": "string",
+            "createAt": 0,
+            "title": "string",
+            "formula": "string",
+            "type": 3,
+            "price": 30,
+            "processingFree": 0,
+            "totalPrice": 0,
+            "commission": 0,
+            "commissionType": 0,
+            "pppid": "string",
+            "ppid": "string",
+            "ppidDetailId": "string",
+            "dispatcher": "string"
+          }
+        ],
+        "surcharges": [
+          {
+            "id": "string",
+            "createAt": 0,
+            "surchargeName": "超长物品附加费",
+            "desc": "外箱尺寸单边超过120厘米或第二边长超过76厘米，未达到大型包裹尺寸标准的，则加收超长费用RMB120/件",
+            "chargeUnit": 2,
+            "chargeBase": 0,
+            "chargeMin": 0,
+            "condition": "string",
+            "price": 120,
+            "number": 0,
+            "totalPrice": 0,
+            "chargeType": 2,
+            "weight": 0,
+            "chargeBaseTypeInfos": [
+              {
+                "name": "string",
+                "id": "string",
+                "price": 0
+              }
+            ],
+            "commission": 0,
+            "formula": "string",
+            "edit": 0,
+            "superposition": 0,
+            "selected": 0
+          },
+          {
+            "id": "string",
+            "createAt": 0,
+            "surchargeName": "鞋子类产品附加费",
+            "desc": "纺织品、鞋子、包包加收+1/KG",
+            "chargeUnit": 1,
+            "chargeBase": 0,
+            "chargeMin": 0,
+            "condition": "string",
+            "price": 30,
+            "number": 0,
+            "totalPrice": 0,
+            "chargeType": 3,
+            "weight": 0,
+            "chargeBaseTypeInfos": [
+              {
+                "name": "string",
+                "id": "string",
+                "price": 0
+              }
+            ],
+            "commission": 0,
+            "formula": "string",
+            "edit": 0,
+            "superposition": 0,
+            "selected": 0
+          },
+          {
+            "id": "string",
+            "createAt": 0,
+            "surchargeName": "木箱附加费",
+            "desc": "如果需要木箱包装，加收￥30元",
+            "chargeUnit": "KG",
+            "chargeBase": 0,
+            "chargeMin": 0,
+            "condition": "string",
+            "price": 30,
+            "number": 0,
+            "totalPrice": 0,
+            "chargeType": 1,
+            "weight": 0,
+            "chargeBaseTypeInfos": [
+              {
+                "name": "string",
+                "id": "string",
+                "price": 0
+              }
+            ],
+            "commission": 0,
+            "formula": "string",
+            "edit": 0,
+            "superposition": 0,
+            "selected": 0
+          }
+        ],
+        "agingStart": 0,
+        "agingEnd": 0,
+        "logisticsInfo": 0,
+        "hasTax": 0,
+        "taxType": 0,
+        "introduce": "string",
+        "reserve": "string",
+        "attention": "string",
+        "no": "string",
+        "currency": "string",
+        "confirm": 0,
+        "limitRules": [
+          {
+            "id": "string",
+            "createAt": 0,
+            "no": "string",
+            "currency": "string",
+            "min": 0,
+            "max": 0,
+            "limitType": 0,
+            "multiple": 0,
+            "zones": [
+              {
+                "tzId": "string",
+                "name": "string",
+                "areaCodes": [
+                  0
+                ],
+                "checked": 0
+              }
+            ],
+            "areaCodes": [
+              0
+            ],
+            "pid": "string"
+          }
+        ],
+        "productSpecialGoods": [
+          {
+            "goodType": "string",
+            "needInfo": 0,
+            "infoDesc": "string"
+          }
+        ],
+        "overDistance": 0,
+        "overLongDistance": 0
+      }
+    }
+  },
+  {
+    "url": "com.sendatek.sp.api.config.apis.service.FBAStoreListApi",
+    "response": {
+      "ret_code": "string",
+      "ret_msg": "string",
+      "list": [
+        {
+          "id": "string",
+          "createAt": 0,
+          "code": "string",
+          "postCode": "string",
+          "country": "string",
+          "state": "string",
+          "city": "string",
+          "address": "string"
+        }
+      ]
+    }
+  },
+  {
+    "url": "com.sendatek.sp.api.order.apis.service.OrderGenApi",
+    "response": {
+      "ret_code": "string",
+      "ret_msg": "string",
+      "order": {
+        "id": "string",
+        "createAt": 0,
+        "orderNo": "string",
+        "tno": "string",
+        "orderStatus": {},
+        "interrupt": 0,
+        "user": "string",
+        "phone": "string",
+        "monthlyNo": "string",
+        "pickup": {
+          "type": 0,
+          "date": 0,
+          "begin": 0,
+          "end": 0,
+          "sendTime": 0,
+          "user": "string",
+          "phone": "string",
+          "score": 0,
+          "storeId": "string",
+          "storeAddr": "string",
+          "name": "string",
+          "tno": "string"
+        },
+        "remark": "string",
+        "totalPrice": 0,
+        "priceDetails": [
+          {
+            "title": "string",
+            "bkCon": "string",
+            "formula": "string",
+            "type": 0,
+            "price": 0,
+            "processingFree": 0,
+            "totalPrice": 0,
+            "commission": 0,
+            "commissionType": 0,
+            "pppid": "string",
+            "ppid": "string",
+            "ppidDetailId": "string",
+            "dispatcher": "string"
+          }
+        ],
+        "chinaAddress": {
+          "id": "string",
+          "createAt": 0,
+          "name": "string",
+          "phone": "string",
+          "ext": "string",
+          "province": "string",
+          "city": "string",
+          "town": "string",
+          "areaCode": 0,
+          "addr": "string",
+          "postalCode": "string",
+          "companyName": "string",
+          "defaultAt": 0
+        },
+        "internationalAddress": {
+          "id": "string",
+          "createAt": 0,
+          "name": "string",
+          "code": "string",
+          "phone": "string",
+          "country": "string",
+          "city": "string",
+          "addr": "string",
+          "postalCode": "string",
+          "companyName": "string",
+          "fbaId": 0
+        },
+        "finishAt": 0,
+        "cancelAt": 0
+      }
+    }
+  }
+]

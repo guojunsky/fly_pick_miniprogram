@@ -1,0 +1,268 @@
+{
+  "pages": [
+    {
+      "path": "pages/pickup/index",
+      "style": {
+        "navigationBarTitleText": "取货"
+      }
+    },
+    {
+      "path": "pages/web/index",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/userList/index",
+      "style": {
+        "navigationBarTitleText": "派单"
+      }
+    },
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "国际物流",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/comment/index",
+      "style": {
+        "navigationBarTitleText": "发表评论"
+      }
+    },
+    {
+      "path": "pages/orderFeedback/index",
+      "style": {
+        "navigationBarTitleText": "订单投诉"
+      }
+    },
+    {
+      "path": "pages/feedback/index",
+      "style": {
+        "navigationBarTitleText": "投诉反馈"
+      }
+    },
+    {
+      "path": "pages/check/index",
+      "style": {
+        "navigationBarTitleText": "查件"
+      }
+    },
+    {
+      "path": "pages/detail/index",
+      "style": {
+        "navigationBarTitleText": "产品详情"
+      }
+    },
+    {
+      "path": "pages/orderDetail/index",
+      "style": {
+        "navigationBarTitleText": "订单详情"
+      }
+    },
+    {
+      "path": "pages/commentList/index",
+      "style": {
+        "navigationBarTitleText": "产品评价"
+      }
+    },
+    {
+      "path": "pages/country/index",
+      "style": {
+        "navigationBarTitleText": "目的国家"
+      }
+    },
+    {
+      "path": "pages/city/index",
+      "style": {
+        "navigationBarTitleText": "起运城市"
+      }
+    },
+    {
+      "path": "pages/mine/index",
+      "style": {
+        "navigationBarTitleText": "我的",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/mine/userDetail",
+      "style": {
+        "navigationBarTitleText": "基本资料"
+      }
+    },
+    {
+      "path": "pages/mine/myCoupon",
+      "style": {
+        "navigationBarTitleText": "我的优惠券"
+      }
+    },
+    {
+      "path": "pages/address/index",
+      "style": {
+        "navigationBarTitleText": "地址薄"
+      }
+    },
+    {
+      "path": "pages/address/total",
+      "style": {
+        "navigationBarTitleText": "地址薄"
+      }
+    },
+    {
+      "path": "pages/address/addSender",
+      "style": {
+        "navigationBarTitleText": "寄件人地址"
+      }
+    },
+    {
+      "path": "pages/address/addAddressee",
+      "style": {
+        "navigationBarTitleText": "收件人地址"
+      }
+    },
+    {
+      "path": "pages/sendOrder/index",
+      "style": {
+        "navigationBarTitleText": "寄件"
+      }
+    },
+    {
+      "path": "pages/sendOrder/success",
+      "style": {
+        "navigationBarTitleText": "下单成功"
+      }
+    },
+    {
+      "path": "pages/sendOrder/customs",
+      "style": {
+        "navigationBarTitleText": "报关信息"
+      }
+    },
+    {
+      "path": "pages/sendOrder/valueInsurance",
+      "style": {
+        "navigationBarTitleText": "物品保价"
+      }
+    },
+    {
+      "path": "pages/sendOrder/storehouse",
+      "style": {
+        "navigationBarTitleText": "仓库选择"
+      }
+    },
+    {
+      "path": "pages/sendOrder/additionalCharge",
+      "style": {
+        "navigationBarTitleText": "附加费"
+      }
+    },
+    {
+      "path": "pages/sendOrder/fbaStore",
+      "style": {
+        "navigationBarTitleText": "收件人地址"
+      }
+    },
+    {
+      "path": "pages/checkPrice/index",
+      "style": {
+        "navigationBarTitleText": "查价结果页"
+      }
+    },
+    {
+      "path": "components/goodsinfo/goodsinfo",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/auth/index",
+      "style": {
+        "navigationBarTitleText": "登录"
+      }
+    },
+
+	{
+	  "path": "pages/bill/index",
+	  "style": {
+	    "navigationBarTitleText": "电子发票"
+	  }
+	},
+	{
+	  "path": "pages/write/index",
+	  "style": {
+	    "navigationBarTitleText": "开具发票"
+	  }
+	},
+
+    // 取件
+    {
+      "path": "pages/login/index",
+      "style": {
+        "navigationBarTitleText": " ",
+        "navigationBarBackgroundColor": "#317DE6",
+        "navigationBarTextStyle": "white"
+      }
+    },
+
+    {
+      "path": "pages/login/forgetPassword",
+      "style": {
+        "navigationBarTitleText": " ",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/chat/index",
+      "style": {
+        "navigationBarTitleText": "在线客服"
+      }
+    },
+    {
+      "path": "pages/print/index",
+      "style": {
+        "navigationBarTitleText": "打印"
+      }
+    },
+    {
+      "path": "pages/print/deviceList",
+      "style": {
+        "navigationBarTitleText": "打印机设置"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "国际物流",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#F7F8F9",
+    "navigationStyle": "default"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#999999",
+    "selectedColor": "#056BF1",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/pickup/index",
+        "text": "取货"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "代客下单"
+      },
+      {
+        "pagePath": "pages/check/index",
+        "text": "查件"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的"
+      }
+    ]
+  }
+}

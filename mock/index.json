@@ -1,0 +1,80 @@
+[{
+	"url": "com.sendatek.sp.api.config.apis.service.BannerListApi",
+	"response": {
+		"ret_msg": "ok",
+		"ret_code": "0000",
+		"list": [{
+			"createAt": 1609813473482,
+			"id": "63ac436696774eaa87ab14f18533a642",
+			"img": "https://static.ssroller.com/admin/image/20210105/c3e7062774774655bf6e579c58214fb0.jpg",
+			"link": "http://www.baidu.com",
+			"title": "1"
+		}]
+	}
+}, {
+	"url": "com.sendatek.sp.api.order.apis.service.OrderListApi",
+	"response": {
+		"ret_msg": "ok",
+		"ret_code": "0000",
+		"list|20": [{
+			"orderNo": "@word(7)",
+			"tno": "@word(7)",
+			"orderStatus|1": [100,101,102,200,210,211,220,300,301,320,330,400,500,501,502,900,901,910,999],
+			"createAt": 1609813473482,
+			"finishAt": 1609813473482,
+			"cancelAt": 1609813473482,
+			"chinaAddress": {
+				"id": "@word(7)",
+				"createAt": 0,
+				"name": "@cword(7)",
+				"phone": "@tel",
+				"ext": "@word(7)",
+				"province": "@cword(5)",
+				"city": "@cword(5)",
+				"town": "@cword(5)",
+				"areaCode": 0,
+				"addr": "@cword(5)",
+				"postalCode": "@word(5)",
+				"companyName": "@cword(5)",
+				"defaultAt": 0
+			},
+			"internationalAddress": {
+				"id": "@id",
+				"createAt": 0,
+				"name": "@cword(5)",
+				"areaCode": "@word(5)",
+				"phone": "@tel",
+				"country": "中国",
+				"countryCode": 0,
+				"city": "成都",
+				"addr": "金牛区11号",
+				"postalCode": "string",
+				"companyName": "@cword(5)",
+				"fbaId": 0
+			},
+			"pickup": {
+				"type": 1,
+				"date": 20210901,
+				"begin": 930,
+				"end": 1800,
+				"sendTime": 0,
+				"user": "@cword(5)",
+				"phone": "@tel",
+				"score": 0,
+				"storeId": "@id",
+				"storeAddr": "@cword(5)",
+				"name": "@tel",
+				"tno": "@tel"
+			},
+			"totalPrice": 1000,
+			"paidAmount": 800,
+			"canPay": 0,
+			"unpaidAmount": 800,
+			"unpaidBills": [{
+				"amount": 0,
+				"reason": "@tel"
+			}]
+		}],
+		"nextCursor": 0
+	}
+}]

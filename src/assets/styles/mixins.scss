@@ -1,0 +1,32 @@
+@function rem($px) {
+    @return 1rpx * $px;
+}
+
+@mixin text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+@mixin text-overflow-line($i:2) {
+    overflow: hidden;
+    text-overflow: clip;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:$i;
+}
+
+@mixin pos-center {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+@mixin image-bg($w, $h, $img) {
+    width: $w;
+    height: $h;
+    background: #{$img} no-repeat center;
+    background-size: contain;
+}

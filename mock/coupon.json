@@ -1,0 +1,59 @@
+[
+  {
+    "url": "com.sendatek.sp.api.product.apis.MyCouponListApi",
+    "response": {
+      "ret_code": "0000",
+      "ret_msg": "0000",
+      "list|10": [
+        {
+          "id": "string",
+          "createAt": 0,
+          "expireType": 2,
+          "expireBeginAt": 0,
+          "expireEndAt": 0,
+          "expireTime": 0,
+          "type": 1,
+          "usingTimes": 0,
+          "sourcePrice": 10000,
+          "eachPrice": 0,
+          "reducePrice": 100,
+          "maxPrice": 0,
+          "discount": 0,
+          "usingScope": 1,
+          "usingId": "string",
+          "notes": "string",
+          "totalCount": 0,
+          "leftCount": 0,
+          "leftWarnCount": 0,
+          "notifyEmail": "string",
+          "weightStart": 0,
+          "weightEnd": 0,
+          "needBuy": 0
+        }
+      ],
+      "nextCursor": 0
+    }
+  },
+  {
+    "url": "com.sendatek.sp.api.config.apis.service.TransitStoreListApi",
+    "response": {
+      "ret_code": "string",
+      "ret_msg": "string",
+      "stores": [
+        {
+          "id": "string",
+          "createAt": 0,
+          "name": "上海仓",
+          "address": "上海市浦东新区张杨路999号A区",
+          "contact": "李四",
+          "phone": "13813274456",
+          "city": "上海",
+          "code": 0,
+          "supports": [
+            0
+          ]
+        }
+      ]
+    }
+  }
+]

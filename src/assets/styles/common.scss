@@ -1,0 +1,30 @@
+@import "./mixins";
+
+@mixin icon-send-txt {
+    font-size: rem(24);
+    font-weight: 400;
+    color: #FEFFFE;
+    text-align: center;
+    padding-top: rem(7);
+}
+
+.icon-send-c {
+    @include image-bg(rem(42), rem(52), url('@/assets/images/icon/send.png'));
+    @include icon-send-txt;
+}
+
+.icon-receive-c {
+    @include image-bg(rem(42), rem(52), url('@/assets/images/icon/receive.png'));
+    @include icon-send-txt;
+}
+.icon-check-c {
+    width: rem(40);
+    height: rem(40);
+    border: rem(1) solid #999999;
+    border-radius: rem(40);
+    box-sizing: border-box;
+}
+
+.icon-checked-c {
+    @include image-bg(rem(50), rem(50), url('@/assets/images/icon/checked_blue.png'));
+}

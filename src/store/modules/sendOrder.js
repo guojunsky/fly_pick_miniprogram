@@ -146,7 +146,7 @@ export const defaultCheckPriceFilterParams = () => {
     return {
         dispatcher: [],
         logisticsInfo: [],
-        agingStart: 4,
+        agingStart: 2,
         agingEnd: 21
     }
 }
@@ -473,7 +473,7 @@ export default {
 
                         dispatcher: [],
                         logisticsInfo: [],
-                        agingStart: 4,
+                        agingStart: 2,
                         agingEnd: 21,
                         packageWay: goodsInfo.goodsValue === 1 ? 0 : 1
                     }

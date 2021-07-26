@@ -26,7 +26,7 @@
           </div>
           <div v-if="pickup.type == 2">2.下单后请尽快自送到此地址，<span class="text-red text-bold">并打印运单或手写订单号在物品外包装上，</span>否则可能会多收操作费。如超过2天物品未到达仓库，运费按实际到达日的价格计费；
           </div>
-          <div>3.确保您是如实输入物品信息，如到达仓库后发现和输入实际不符，-切产生的退件、加收费用都将由您承担。</div>
+          <div><span class="text-red text-bold">3.确保您是如实输入物品信息，如到达仓库后发现和输入实际不符，-切产生的退件、加收费用都将由您承担。</span></div>
         </div>
       </template>
       <div class="page_sub" v-else>快递员上门时间：{{ pickupDate }}</div>

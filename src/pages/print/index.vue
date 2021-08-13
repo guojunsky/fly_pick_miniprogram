@@ -79,12 +79,14 @@
 		showMessage
 	} from "@/util";
 	import dayjs from "dayjs";
+  let QRPrinter = require("../../libs/wxQRPrinter/QRPrinter.js");
 	import {
 		orderStatusObj,
 		orderProcess
 	} from '../../common/helper.js';
 	// import background from '../../static/print/express_bg.jpg'
 	const background = '../../static/print/express_bg.jpg' // canvas 绘制本地文件需要使用实际路径，不能通过import引入，否则真机无法显示背景图
+
 	const sleep = (ms) => {
 		return new Promise(resolve => {
 			setTimeout(resolve, ms)
@@ -223,7 +225,7 @@
 
 				return parseFloat((total / 1000).toFixed(2))
 			},
-			toPrint() {
+			async toPrint() {
 				//获取需要绘制的数据
 				let data = this.goodsItems.filter(item => item.selected);
 				if (data.length === 0) {
@@ -232,27 +234,30 @@
 				}
 
 				let that = this;
-				let arr = data.map((item, index) => {
-					return function() {
-						return new Promise(function(resolve, reject) {
-							// 开始绘制数据
-              that.onConnectReady(item, index, resolve).catch(e=>{
-                uni.hideLoading()
-                showMessage(`第${index}件货品单号打印失败`)
-                reject(e)
-              })
+        for(let i = 0; i<data.length; i++){
+          await that.write180Model(data[i], `${i+1}/${data.length}`);
+        }
+				// let arr = data.map((item, index) => {
+				// 	return function() {
+				// 		return new Promise(function(resolve, reject) {
+				// 			// 开始绘制数据
+        //       that.onConnectReady(item, index, resolve).catch(e=>{
+        //         uni.hideLoading()
+        //         showMessage(`第${index}件货品单号打印失败`)
+        //         reject(e)
+        //       })
 
-						});
-					}
-				})
-				console.log(arr);
+				// 		});
+				// 	}
+				// })
+				// console.log(arr);
 
-				this.queue(arr)
-					.then(res => {
-						for (let i = 0; i < res.length; i++) {
-							console.log(res[i])
-						}
-					})
+				// this.queue(arr)
+				// 	.then(res => {
+				// 		for (let i = 0; i < res.length; i++) {
+				// 			console.log(res[i])
+				// 		}
+				// 	})
 
 
 			},
@@ -264,6 +269,67 @@
 				}
 				return await res
 			},
+      write180Model(item, orderInd){
+        return new Promise((resolve, reject)=>{
+          function strReset(str){
+            return (str === null || str === undefined) ? '' : str
+          }
+          let {chinaAddress,abroadAddress, productNo, goods} = this.printOrder;
+          console.log(this.printOrder,'printOrder');
+          console.log(chinaAddress,'chinaAddress');
+          console.log(abroadAddress,'abroadAddress');
+          //收件信息
+          let {} = abroadAddress;
+  
+          //寄件信息
+          let {province,city,town,addr} = chinaAddress;
+          let x = 0
+          let y = -20
+          QRPrinter.pageSetup(576, 900)
+          QRPrinter.drawText(x + 24, y + 100, productNo, 3, 0, 1, false, false)
+          
+          QRPrinter.drawText(x + 24, y + 155, 'TO: ' + strReset(abroadAddress.name), 10, 0, 0, false, false)
+          QRPrinter.drawText(x + 24, y + 190, strReset(abroadAddress.addr), 10, 0, 0, false, false)
+          QRPrinter.drawText(x + 24, y + 250, "Phone: " + strReset(abroadAddress.phone), 10, 0, 0, false, false)
+          QRPrinter.drawText(x + 24, y + 285, "City: " + strReset(abroadAddress.city), 10, 0, 0, false, false)
+          QRPrinter.drawText(x + 24, y + 320, "Province: " + strReset(abroadAddress.province), 10, 0, 0, false, false)
+          QRPrinter.drawText(x + 24, y + 355, "County: " + strReset(abroadAddress.countryEn), 10, 0, 0, false, false)
+          QRPrinter.drawText(x + 24, y + 390, "Postcode: " + strReset(abroadAddress.postalCode), 10, 0, 0, false, false)
+          QRPrinter.drawQrCode(x + 430, y + 210, item.sno, true, 3, 5);
+          QRPrinter.drawText(x + 475, y + 390, orderInd, 10, 0, 0, false, false) //TODO: 包裹？
+
+          QRPrinter.drawText(x + 24, y + 430, "FROM:" , 10, 0, 0, false, false)
+          QRPrinter.drawText(x + 24, y + 500, "Sender Ref:" , 10, 0, 0, false, false)
+          QRPrinter.drawText(x + 24, y + 570, "consignment Ref:" , 10, 0, 0, false, false)
+          QRPrinter.drawText(x + 24, y + 660, "CN:", 10, 0, 0, false, false)
+          QRPrinter.addCmd('CENTER')
+          QRPrinter.drawBarCode(x + 24, y + 770, this.printOrder.tno, 1, true, 2, 70)
+          QRPrinter.drawText(x + 24, y + 850, this.printOrder.tno, 10, 0, 0, false, false)
+          QRPrinter.addCmd('LEFT')
+          QRPrinter.drawText(x + 260, y + 430, "Description:" , 10, 0, 0, false, false) // Description
+          // QRPrinter.drawText(x + 260, y + 460, abroadAddress.city, 10, 0, 0, false, false) // 描述
+          QRPrinter.drawText(x + 260, y + 650, 'C/T:', 10, 0, 0, false, false) // ct
+          QRPrinter.drawText(x + 320, y + 650, `${goods.items.length} PCS`, 10, 0, 0, false, false) // ct
+          QRPrinter.drawText(x + 260, y + 680, 'W/T:', 10, 0, 0, false, false) // WT
+          QRPrinter.drawText(x + 320, y + 680, `${this.handleWeight(goods.items)} KG`, 10, 0, 0, false, false) // WT
+          QRPrinter.drawText(x + 260, y + 710, 'Date:', 10, 0, 0, false, false) // Date
+          QRPrinter.drawText(x + 330, y + 710, `${dayjs(this.printOrder.createAt).format('DD/MM/YYYY')}`, 10, 0, 0, false, false) // Date
+
+          let lineWidth = 1
+          QRPrinter.drawLine(lineWidth, x + 24, y + 150, x + 576, y + 150, true)
+          QRPrinter.drawLine(lineWidth, x + 24, y + 420, x + 576, y + 420, true)
+          QRPrinter.drawLine(lineWidth, x + 24, y + 760, x + 576, y + 760, true)
+          QRPrinter.drawLine(lineWidth, x + 400, y + 150, x + 400, y + 420, true)
+          QRPrinter.drawLine(lineWidth, x + 240, y + 420, x + 240, y + 760, true)
+          QRPrinter.print(false,true, res=>{
+            if(res === 'success'){
+              resolve();
+            } else {
+              reject();
+            }
+          })
+        })
+      },
 			handlerClip(data) {
 				uni.setClipboardData({
 					data,

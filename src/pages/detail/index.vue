@@ -115,7 +115,7 @@
 			<view class="intro_content">
 				<view class="intro">
 					<view class="tab_content">
-						<view :class="['tab_item',activeIndex == 0 ? 'active' : '']" @click="handlerIndex(0)">产品介绍</view>
+						<view :class="['tab_item',activeIndex == 0 ? 'active' : '']" @click="handlerIndex(0)">注意事项</view>
 						<view :class="['tab_item',activeIndex == 1 ? 'active' : '']" @click="handlerIndex(1)">评价{{detail.commentCount ? `(${detail.commentCount})` : ''}}</view>
 					</view>
 					<view class="tab_intro" v-show="activeIndex === 0">

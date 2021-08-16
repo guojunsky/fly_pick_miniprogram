@@ -1,6 +1,6 @@
 <template>
 	<view class="goods_content">
-		<view class="title">物品类型</view>
+		<view class="title">国际快递计费重量由物品实际重量和体积决定</view>
 		<view class="type_content">
 			<view :class="['type_item',goodsType == 1 ? 'active' : '']" @click="hanlderTab(1)">文件</view>
 			<view :class="['type_item',goodsType == 2 ? 'active' : '']" @click="hanlderTab(2)">包裹</view>

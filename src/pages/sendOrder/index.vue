@@ -24,7 +24,7 @@
 							<!--            <div class="text-form text-form-xs text-form-gray">快递单号：402039039</div>-->
 						</div>
 					</formItem>
-					<formItem label="报关信息" labelWidth="180rpx">
+					<formItem label="物品信息" labelWidth="180rpx">
 						<div @click="toCustomsPage" class="text-form text-form-gray" v-if="!customsManifest || !customsManifest.items || !customsManifest.items.length">请如实填写
 						</div>
 						<div @click="toCustomsPage" class="text-form" v-else>

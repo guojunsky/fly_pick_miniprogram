@@ -56,10 +56,14 @@ export default {
     initData() {
       const {pickUpConfig} = this.pickupConfig || {}
       if (!pickUpConfig) return
-      const {pickUpStart, pickUpEnd} = pickUpConfig
+      const {pickUpStart, pickUpEnd,pickUpInterval} = pickUpConfig
       if (!pickUpStart || !pickUpEnd) return []
 
       // const date = dayjs().format('YYYY-MM-DD')
+      const currentHour = new Date().getHours()
+
+      const start = parseInt(pickUpStart.split(':')[0], 10)
+      const end = parseInt(pickUpEnd.split(':')[0], 10)
 
       const pad2 = (n) => {
         return n < 10 ? '0' + n : n
@@ -69,23 +73,29 @@ export default {
       }
       const createRow = (hour, name) => {
         const cur = pad2(hour)
-        const next = pad2(hour + 1)
+        let count =pickUpInterval?pickUpInterval:1;
+        let next  =0;
+        if((hour+count) >end){
+           next = pad2(end);
+        }else{
+           next =pad2(hour+count);
+        }
+        //const next = pad2(hour + count)
         return {name: name || `${cur}:00-${next}:00`, value: [cur + '00', next + '00']}
       }
 
       const createDayList = (start, end) => {
         let list = []
 
-        for (let i = start; i < end; ++i) {
+        for (let i = start; i < end;) {
           list.push(createRow(i))
+           let count =pickUpInterval?pickUpInterval:1;
+           i =i+count;
         }
         return list
       }
 
-      const currentHour = new Date().getHours()
 
-      const start = parseInt(pickUpStart.split(':')[0], 10)
-      const end = parseInt(pickUpEnd.split(':')[0], 10)
 
 
       // 生成列表

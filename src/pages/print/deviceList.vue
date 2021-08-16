@@ -12,7 +12,7 @@
         未搜索到设备
       </div>
       <div class="device_wrap" v-else>
-        <div class="device_list" v-for="(item,index) in devices" @click="selectedDevice(item,index)">
+        <div class="device_list" v-for="(item,index) in devices" :key="index" @click="selectedDevice(item,index)">
           <div>
             <div class="device_name">{{ item.name }}</div>
             <div class="device_row">{{ item.deviceId }}</div>
@@ -36,7 +36,7 @@
 <script>
 import * as zksdk from '../../util/bluetoolthPrinter/bluetoolth';
 import {showMessage} from "@/util";
-
+let QRPrinter = require("../../libs/wxQRPrinter/QRPrinter.js");
 export default {
   name: "deviceList",
   data() {
@@ -61,12 +61,23 @@ export default {
     selectedDevice(data, index) {
       if (!data) return
       data.isSelected = true
-
+      console.log(data);
       this.devices.map(item => {
         if (data.deviceId !== item.deviceId) {
           item.isSelected = false
         }
+      });
+      this.devices.splice(index,1,data);
+      console.log(this.devices);
+      wx.stopBluetoothDevicesDiscovery({
+        success:function(e){
+          console.log(e);
+        }
       })
+      // QRPrinter.connect(data.deviceId,function(res){
+      //   console.log(res);
+      // })
+     // QRPrinter.disconnect();
     },
     toPrintPage() {
       let deviceData = this.devices.filter(item => item.isSelected)
@@ -89,17 +100,39 @@ export default {
       })
     },
     handleBlue() {
-      zksdk.openBlue()
-          .then(() => {
-            //搜寻设备
-            zksdk.startBluetoothDevicesDiscovery();
-            //监听寻找新设备
-            zksdk.onfindBlueDevices(this.onGetDevice)
-          })
-          .catch(e => {
-            uni.hideLoading()
-            showMessage("蓝牙连接失败")
-          })
+      // zksdk.openBlue()
+      //     .then(() => {
+      //       //搜寻设备
+      //       zksdk.startBluetoothDevicesDiscovery();
+      //       //监听寻找新设备
+      //       zksdk.onfindBlueDevices(this.onGetDevice)
+      //     })
+      //     .catch(e => {
+      //       uni.hideLoading()
+      //       showMessage("蓝牙连接失败")
+      //     })
+        let that =this;
+         QRPrinter.searchPrinter(function(devices){
+           uni.hideLoading();
+           console.log(that.devices,'array');
+           console.log(devices,'----------devices');
+            let arr  = that.devices.filter(item=>item.deviceId ==devices[0].deviceId);
+           if(arr.length ==0){
+             that.devices = that.devices.concat(devices);
+             that.devices = that.devices.map(item => {
+              item.isSelected = false
+              return item;
+             });
+           }
+         // that.devices = that.devices.concat(devices);
+           
+           console.log(that.devices,'devices_dddd')
+         
+        },err=>{
+          uni.hideLoading();
+          showMessage("蓝牙连接失败")
+        });
+
     },
     searchDevice() {
       uni.showLoading()

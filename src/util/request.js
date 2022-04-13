@@ -8,7 +8,7 @@ import {
 import {getCloudInstance} from "@/util/wxCloud";
 
 // const baseUrl = 'http://sendatek-2gp430wnd7fb8cb3-1304710895.ap-shanghai.app.tcloudbase.com/gateway'
-const baseUrl = 'http://121.5.101.188:12300/gateway'
+const baseUrl = 'https://api.sendatek.com/gateway'
 // const baseUrl = 'http://127.0.0.1:7654/gateway/' // mock server
 let getHeaders = (headers) => {
     let params = headers['X-Ca-Signature-Headers'].split(',');
@@ -23,7 +23,7 @@ let getHeaders = (headers) => {
 
 let getSignature = (headers) => {
     let Headers = getHeaders(headers);
-    let Path = '/gateway/';
+    let Path = '/gateway';
     let Accept = headers['Accept'];
     let ContentType = headers['Content-Type'];
     //浏览器不能传Date

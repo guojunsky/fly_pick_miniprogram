@@ -38,8 +38,8 @@ export function getFlyTIMInstance() {
 //获取userSig
 function getUserSig() {
     //todo 租户登录入参,暂时写死
-    const appKey = "8gi93u02";
-    const appSecret = "192117964382";
+    const appKey = 'AppArgs.APP_KEY';
+    const appSecret = 'AppArgs.APP_SECRET';
     return tenantLogin({
         appKey,
         appSecret

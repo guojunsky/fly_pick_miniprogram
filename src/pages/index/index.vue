@@ -80,12 +80,25 @@
 			<goodsInfo ref="goodsInfo" :goods-nature="goodsNature" :dispatcherTypes="dispatcherTypes" :fba="fba" :fbaval.sync="fbaval"
 			 @close="handlerClose"></goodsInfo>
 		</slidePopup>
+			<customDialog  :visible.sync="showRCode">
+				<view class="rcode">
+					<view class="rcode_close" @click="showRCode=false"></view>
+					  <view class="rcode_footer">
+							您可以添加如下客服微信，我们将竭力为您服务
+						</view>
+					<view class="kefu" >
+	       <image src="/static/index/rcode.jpeg"></image>
+					</view>
+				</view>
+			</customDialog>
 	</view>
 </template>
 
 <script>
 	import navtitle from '../../components/header/header.vue'
 	import slidePopup from '@/components/slide-popup'
+	import customDialog from '@/components/popup/dialog'
+
 	import goodsInfo from '@/components/goodsinfo/goodsinfo.vue'
 	import {
 		BannerListApi
@@ -112,7 +125,8 @@
 		components: {
 			navtitle,
 			slidePopup,
-			goodsInfo
+			goodsInfo,
+			customDialog
 		},
 		computed: {
 			...mapGetters(['city', 'country', 'login', 'userInfo']),
@@ -238,7 +252,8 @@
 					width: '37rpx',
 					height: '41rpx'
 				}],
-				chatLoading: false
+				chatLoading: false,
+				showRCode: false
 			}
 		},
 		onLoad() {
@@ -335,9 +350,11 @@
 						phoneNumber: '4008803783'
 					})
 				} else if (menu.name === '在线客服') {
-					this.handleIM(FlyIMBusinessGroupId)
+					// this.handleIM(FlyIMBusinessGroupId)
+					this.showRCode = true
 				} else if (menu.name === '大货询价') {
-					this.handleIM(FlyIMMajorGroupId)
+						this.showRCode = true
+					// this.handleIM(FlyIMMajorGroupId)
 				} else {
 					if (!menu.url) return
 					if (menu.url.indexOf('/pages/sendOrder/index') > -1) {
@@ -805,5 +822,41 @@
 		position: absolute;
 		top: rem(100);
 		left: rem(100);
+	}
+	.rcode{
+		height: 400rpx;
+		width: 400rpx;
+		margin: 0 auto;
+		position: relative;
+		background-color: #fff;
+		padding: rem(60);
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		  &_close {
+    @include image-bg(rem(28), rem(28), url('../../assets/images/icon/close.png'));
+    background-size: rem(28);
+    width: rem(40);
+    height: rem(40);
+		position: absolute;
+		right: 20rpx;
+		top: 20rpx;
+   }
+	 &_footer{
+		//  position: absolute;
+		//  bottom: 20rpx;
+		//  left: 40rpx;
+		//  right: 40rpx;
+		 font-size: 28rpx;
+	 }
+	}
+	.kefu{
+		width: 320rpx;
+		height: 320rpx;
+	}
+		.kefu image{
+		width: 100%;
+		height:  100%;
 	}
 </style>

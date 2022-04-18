@@ -129,25 +129,25 @@
 									})
 								}
 							},
-							{
-								icon: 'icon-service',
-								name: '在线客服',
-								click: () => {
-									uni.showLoading()
-									handlerCheckLogin({
-										success: (data) => {
-											console.log("登录成功")
-											this.openTIM()
-										},
-										fail: (e) => {
-											showMessage(e && e.msg || '登录失败，请稍后重试')
-										},
-										done: () => {
-											uni.hideLoading()
-										}
-									});
-								}
-							},
+							// {
+							// 	icon: 'icon-service',
+							// 	name: '在线客服',
+							// 	click: () => {
+							// 		uni.showLoading()
+							// 		handlerCheckLogin({
+							// 			success: (data) => {
+							// 				console.log("登录成功")
+							// 				this.openTIM()
+							// 			},
+							// 			fail: (e) => {
+							// 				showMessage(e && e.msg || '登录失败，请稍后重试')
+							// 			},
+							// 			done: () => {
+							// 				uni.hideLoading()
+							// 			}
+							// 		});
+							// 	}
+							// },
 							// {icon: 'icon-printer', name: '打印机管理', routePath: ''},
 						],
 						[
@@ -191,25 +191,25 @@
 								})
 							}
 						},
-						{
-							icon: 'icon-service',
-							name: '在线客服',
-							click: () => {
-								uni.showLoading()
-								handlerCheckLogin({
-									success: (data) => {
-										console.log("登录成功")
-										this.openTIM()
-									},
-									fail: (e) => {
-										showMessage(e && e.msg || '登录失败，请稍后重试')
-									},
-									done: () => {
-										uni.hideLoading()
-									}
-								});
-							}
-						},
+						// {
+						// 	icon: 'icon-service',
+						// 	name: '在线客服',
+						// 	click: () => {
+						// 		uni.showLoading()
+						// 		handlerCheckLogin({
+						// 			success: (data) => {
+						// 				console.log("登录成功")
+						// 				this.openTIM()
+						// 			},
+						// 			fail: (e) => {
+						// 				showMessage(e && e.msg || '登录失败，请稍后重试')
+						// 			},
+						// 			done: () => {
+						// 				uni.hideLoading()
+						// 			}
+						// 		});
+						// 	}
+						// },
 						{
 							icon: 'icon-address',
 							name: '地址管理',

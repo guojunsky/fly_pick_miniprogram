@@ -63,7 +63,7 @@
 		<view class="line_box">
 			<view class="line"></view>
 			<view class="slogon">
-				<image class="logo" src="../../static/index/logo.jpg"></image>
+				<image class="logo" src="../../static/index/logo.png"></image>
 				<view class="line_txt">跨境物流，数达全球</view>
 			</view>
 		</view>
@@ -474,7 +474,7 @@
 		width: 40rpx;
 		height: 40rpx;
 		border-radius: 30px;
-		border: solid 2rpx #CCCCCC;
+		// border: solid 2rpx #CCCCCC;
 		margin-right: 10rpx;
 	}
 

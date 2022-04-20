@@ -1,4 +1,4 @@
-export const appId = "wx47c28750aea6928d";
+export const appId = "wx5c1ad8d9f8520979";
 export const resourceAppid = "wx884fa3ccb498cfa6";
 //云托管环境id
 export const cloudEnvId = "sendatek-2glg02p2d87420ed";

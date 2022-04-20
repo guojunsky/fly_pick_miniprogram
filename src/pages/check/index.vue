@@ -70,7 +70,7 @@
 						<view class="btn_right">
 							<view class="btn" @click="handlerFeedback(item.orderNo)" v-if="canComplain(item.orderStatus)">投诉</view>
 							<view class="btn margin_left_20" @click.stop="hanlderPay(item)" v-if="item.orderStatus == 300 && item.canPay">确认支付</view>
-							<view class="btn margin_left_20" v-else-if="item.orderStatus == 900" @click="handlerComment(item.orderNo,item.productId)">去评价</view>
+							<!-- <view class="btn margin_left_20" v-else-if="item.orderStatus == 900" @click="handlerComment(item.orderNo,item.productId)">去评价</view> -->
 							<view class="btn margin_left_20" v-else-if="item.orderStatus == 999 || item.orderStatus == 102" @click="handlerAgain(item)">重新下单</view>
 							<view class="btn margin_left_20" @click.stop="hanlderCancelOrder(item.orderNo)" v-if="canCancel(item.orderStatus)">取消订单</view>
 						</view>

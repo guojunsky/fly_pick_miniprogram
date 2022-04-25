@@ -133,7 +133,7 @@
                   <p class="product-info_it">单价:<span>{{ item.price / 100 }}元/KG</span></p>
                   <div class="product-info_it product-info_total">
                     总价：¥{{ item.totalPrice / 100 }}
-                    <div class="icon-total" @click.stop="openDetail(item)"></div>
+                    <div class="icon-total" @tap.native.stop="openDetail" v-bind:id="index"></div>
                   </div>
                 </div>
                 <div class="product-tips" v-if="item.attention">
@@ -539,8 +539,9 @@ export default {
       }
       return obj[data.type]
     },
-    openDetail(item) {
-      this.currentProduct = item;
+    openDetail(e) {
+      // console.log(e.target.id)
+      this.currentProduct = this.productList[e.target.id];
       this.totalPriceVisible = true;
     },
     toOrderPage(item) {

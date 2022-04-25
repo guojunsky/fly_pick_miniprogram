@@ -163,7 +163,7 @@
 								icon: 'icon-about',
 								name: '关于我们',
 								click: () => {
-									const link = 'https://www.sendatek.com/about/index.html'
+									const link = 'https://sp.sendatek.com/about/index.html'
 									const url = encodeURIComponent(link)
 									uni.setStorageSync('url', url)
 									uni.navigateTo({
@@ -232,7 +232,7 @@
 							icon: 'icon-about',
 							name: '关于我们',
 							click: () => {
-								const link = 'https://www.sendatek.com/about/index.html'
+								const link = 'https://sp.sendatek.com/about/index.html'
 								const url = encodeURIComponent(link)
 								uni.setStorageSync('url', url)
 								uni.navigateTo({

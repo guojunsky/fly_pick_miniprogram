@@ -4,7 +4,8 @@ import {showMessage} from "@/util";
 const state = {
     login: false,
     userInfo: '',
-    lgUserInfo: null
+    lgUserInfo: null,
+    config: {}
 }
 const mutations = {
     TOGGLE_LOGIN: (state, val) => {
@@ -13,6 +14,9 @@ const mutations = {
     TOGGLE_USERINFO: (state, val) => {
         state.userInfo = val
     },
+    SetConfig: (state, val)=>{
+        state.config = val
+    }
 }
 const actions = {
     toggleLogin({commit}, val) {
@@ -58,6 +62,9 @@ const actions = {
             console.log(e)
         }
 
+    },
+    setConfig({commit}, data){
+        commit('SetConfig', data)
     }
 }
 

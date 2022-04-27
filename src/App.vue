@@ -2,7 +2,7 @@
 import {
   getCloudInstance
 } from "@/util/wxCloud";
-
+import { sassInterceptor } from './util/sassInterceptor'
 export default {
   onLaunch: async function () {
     //设置首页默认跳转index标识
@@ -14,6 +14,17 @@ export default {
       console.log("onLaunch mp-weixin-cloud")
       await getCloudInstance()
     }
+    uni.showLoading({
+        title: '加载中...'
+    })
+    try{
+        const config =  await sassInterceptor.login()
+        this.$store.dispatch('user/setConfig', config)
+    }
+   finally{
+       uni.hideLoading()
+   }
+    
   },
   onShow: function () {
     console.log('App Show')

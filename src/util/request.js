@@ -1,14 +1,24 @@
 import md5 from 'md5';
 import {
-    appId, cloudEnvId
+    appId,
+    cloudEnvId
 } from '@/util/common';
 import {
     showMessage
 } from '@/util/index.js'
-import {getCloudInstance} from "@/util/wxCloud";
-
+import {
+    getCloudInstance
+} from "@/util/wxCloud";
+import {
+    context
+} from './context'
+import {
+    sassInterceptor
+} from './sassInterceptor'
 // const baseUrl = 'http://sendatek-2gp430wnd7fb8cb3-1304710895.ap-shanghai.app.tcloudbase.com/gateway'
-const baseUrl = 'https://api.sendatek.com/gateway'
+const baseUrl = 'https://test.sendatek.com/gateway'
+
+
 // const baseUrl = 'http://127.0.0.1:7654/gateway/' // mock server
 let getHeaders = (headers) => {
     let params = headers['X-Ca-Signature-Headers'].split(',');
@@ -49,25 +59,34 @@ function createHeaders(api, data) {
         'X-Ca-Appid': 'wuliu',
         'X-Ca-Version': '1.0',
         'X-Ca-Timestamp': new Date().getTime(),
-        'X-Ca-Nonce': 'e807f1fcf82d132f9byh987bjn98',//随便给个
+        'X-Ca-Nonce': 'e807f1fcf82d132f9byh987bjn98', //随便给个
         'X-Ca-Signature-Headers': 'X-Ca-Appid,X-Ca-Nonce,X-Ca-Timestamp,X-Ca-Version',
     }
     let sign = getSignature(header);
-    return Object.assign(header, {"X-Ca-Signature": sign})
+    return Object.assign(header, {
+        "X-Ca-Signature": sign
+    })
 }
 
-function request(url, data = {}, autoAlert = true) {
+function request(url, data = {}, autoAlert = true, noProxy = false) {
+    if (!noProxy) {
+        const proxy = sassInterceptor.pre(url, data)
+        if (proxy) {
+            return proxy
+        }
+    }
+
 
     // 处理一些基础参数 mock
     const baseInfo = {
         "channel": appId,
-        "loginChannel":2,
+        "loginChannel": 2,
         "bzChannel": 1,
         "myUid": uni.getStorageSync('myUid') || '',
         "auth": uni.getStorageSync('auth') || '',
-		// "leagueId": 'c15401476795495ab01db96c1885e4cb',// test 加盟商id
-        "leagueId":uni.getStorageSync('userInfo') && (JSON.parse(uni.getStorageSync('userInfo'))['lgId'] || ''),
-        "lgMyUid":uni.getStorageSync('lgMyUid') || ''//加盟商主账号id
+        // "leagueId": 'c15401476795495ab01db96c1885e4cb',// test 加盟商id
+        "leagueId": uni.getStorageSync('userInfo') && (JSON.parse(uni.getStorageSync('userInfo'))['lgId'] || ''),
+        "lgMyUid": uni.getStorageSync('lgMyUid') || '' //加盟商主账号id
     }
 
 
@@ -76,7 +95,7 @@ function request(url, data = {}, autoAlert = true) {
     // Object.assign(baseInfo, {"myUid":"1e74f7c6cef24f80b88dcdcda42d35d4","auth":"5n68djeVEYG+cI/yrvkmoi96H4/hXa8WsWZncCyQYg8=.COb7OTNQo2qi67+8R3Q5FBAgtdtUCLYHcSJGK12Sw085fTOAKSsqLKLrv7xHdDkUECC121QItgfBsKO7bips/a+O8s4WJZ+oTdZtAfa+kbHBzJXwpuEaVZe7YNhAR3wSmI8a71zDM2sKofzX+/TvmDiSZ+fqoycYJ39x/AQweep8tqOSdSUpzg==.e1b9f552eef473a8b62784c0e74cba7a237cbd04"})
     // }
 
-    let headers = createHeaders(url,data)
+    let headers = createHeaders(url, data)
     console.log("请求url", url)
     console.log("请求参数", {
         base: baseInfo,
@@ -86,6 +105,10 @@ function request(url, data = {}, autoAlert = true) {
         base: baseInfo,
         ...data
     }))
+
+    if (context.baseParam) {
+        Object.assign(baseInfo, context.baseParam)
+    }
     return new Promise(async (resolve, reject) => {
         //修改为云托管 wx.cloud.callContainer
         let params = {
@@ -115,7 +138,7 @@ function request(url, data = {}, autoAlert = true) {
             }
         }
 
-        if(process.env.IN_HOSTING === 'mp-weixin-cloud'){
+        if (process.env.IN_HOSTING === 'mp-weixin-cloud') {
             console.log("request mp-weixin-cloud")
             params['path'] = '/gateway/';
             let c1 = await getCloudInstance()
@@ -123,7 +146,7 @@ function request(url, data = {}, autoAlert = true) {
                 env: cloudEnvId
             })
             await c1.callContainer(params)
-        }else {
+        } else {
             params['url'] = baseUrl;
             uni.request(params);
         }

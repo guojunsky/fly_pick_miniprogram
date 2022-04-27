@@ -13,6 +13,7 @@ const getters = {
   detail: state => state.app.detail,
   comment: state => state.app.comment,
   pickupUserId: state => state.app.pickupUserId,
+  globalConfig: state => state.user.config,
   login: (state) => {
 	  const expire = uni.getStorageSync('expire')
 	  const login = expire && expire > new Date().getTime()

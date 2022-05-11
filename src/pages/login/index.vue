@@ -64,7 +64,7 @@
     </div>
 
     <div class="page_ft">
-      <p class="page_ft_tt">登录即代表同意 <span class="page_ft_st">用户服务协议</span>和<span class="page_ft_st">隐私政策</span></p>
+      <p class="page_ft_tt">登录即代表同意 <span class="page_ft_st" @click="toLink('register')">用户服务协议</span>和<span class="page_ft_st" @click="toLink('privacy')">隐私政策</span></p>
     </div>
   </div>
 </template>
@@ -412,6 +412,13 @@ export default {
       uni.hideLoading()
       this.isLoginLoading = false
       this.isRegLoading = false
+    },
+    toLink(tag){
+      //1用户协议  2隐私政策
+      // showMessage('todo')
+      uni.navigateTo({
+          url: `/pages/protocol/protocol?filed=${tag}`
+      })
     }
   }
 }

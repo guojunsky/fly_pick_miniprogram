@@ -1,7 +1,7 @@
 import request from "@/util/request";
 //登录
 export const wxLogin = (data) => {
-    return request(`com.sendatek.sp.api.account.apis.service.WechatMiniOpenIdApi`, data, false)
+    return request(`com.sendatek.sp.api.account.apis.service.WechatMiniOpenIdApi`, data, false, true, false)
 }
 //解密
 export const wxDecryptLogin = (data) => {
@@ -20,15 +20,15 @@ export const getUser = (data) => {
 
 //下发短信
 export const smsSend = (data) => {
-    return request(`com.sendatek.sp.api.league.apis.service.user.LgSmsSendApi`, data)
+    return request(`com.sendatek.sp.api.league.apis.service.user.LgSmsSendApi`, data, true, false, false)
 }
 //加盟商注册
 export const lgRegister = (data) => {
-    return request(`com.sendatek.sp.api.league.apis.service.user.LgRegisterApi`, data)
+    return request(`com.sendatek.sp.api.league.apis.service.user.LgRegisterApi`, data, true, false, false)
 }
 //加盟商登录
 export const lgLogin = (data) => {
-    return request(`com.sendatek.sp.api.league.apis.service.user.LgLoginApi`, data)
+    return request(`com.sendatek.sp.api.league.apis.service.user.LgLoginApi`, data, true, false, false)
 }
 //修改密码
 export const lgPwdChange = (data) => {
@@ -36,7 +36,7 @@ export const lgPwdChange = (data) => {
 }
 //忘记密码
 export const lgPwdForget = (data) => {
-    return request(`com.sendatek.sp.api.league.apis.service.user.LgPwdForgetApi`, data)
+    return request(`com.sendatek.sp.api.league.apis.service.user.LgPwdForgetApi`, data, true, false, false)
 }
 //取货员/加盟商 -设置是否接单
 export const setPickUpPersonnelOnline = (data,type=3) => {

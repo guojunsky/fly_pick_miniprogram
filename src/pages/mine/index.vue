@@ -163,11 +163,11 @@
 								icon: 'icon-about',
 								name: '关于我们',
 								click: () => {
-									const link = 'https://sp.sendatek.com/about/index.html'
-									const url = encodeURIComponent(link)
-									uni.setStorageSync('url', url)
+									// const link = 'https://sp.sendatek.com/about/index.html'
+									// const url = encodeURIComponent(link)
+									// uni.setStorageSync('url', url)
 									uni.navigateTo({
-										url: '../web/index'
+										url: '/pages/protocol/protocol?filed=aboutUs'
 									})
 								}
 							}
@@ -232,12 +232,15 @@
 							icon: 'icon-about',
 							name: '关于我们',
 							click: () => {
-								const link = 'https://sp.sendatek.com/about/index.html'
-								const url = encodeURIComponent(link)
-								uni.setStorageSync('url', url)
-								uni.navigateTo({
-									url: '../web/index'
-								})
+								// const link = 'https://sp.sendatek.com/about/index.html'
+								// const url = encodeURIComponent(link)
+								// uni.setStorageSync('url', url)
+								// uni.navigateTo({
+								// 	url: '../web/index'
+								// })
+                                uni.navigateTo({
+                                	url: '/pages/protocol/protocol?filed=aboutUs'
+                                })
 							}
 						},
 						// {

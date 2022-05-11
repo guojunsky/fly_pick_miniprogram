@@ -1082,11 +1082,11 @@
 				this.$store.commit('sendOrder/setRemark', this.form.remark)
 			},
 			toAgreementDetail() {
-				const link = 'https://sp.sendatek.com/about/send.html'
-				const url = encodeURIComponent(link)
-				uni.setStorageSync('url', url)
+				// const link = 'https://sp.sendatek.com/about/send.html'
+				// const url = encodeURIComponent(link)
+				// uni.setStorageSync('url', url)
 				uni.navigateTo({
-					url: '../web/index'
+					url: `/pages/protocol/protocol?filed=order`
 				})
 			},
 			async submit() {

@@ -27,7 +27,7 @@ export function handlerCheckLogin({
 	let expire = uni.getStorageSync('expire');
 	let currentTimestamp = new Date().getTime();
 
-	if (myUid && expire >= currentTimestamp) { //已登录
+	if (auth && myUid && expire >= currentTimestamp) { //已登录
 		let userInfo = JSON.parse(uni.getStorageSync('userInfo'));
 		// let res = await getUser()
 		// debugger

@@ -233,7 +233,16 @@
         "navigationBarTitleText": "打印机设置"
       }
     }
-  ],
+      ,{
+            "path" : "pages/protocol/protocol",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "国际物流",

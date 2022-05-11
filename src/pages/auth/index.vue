@@ -162,7 +162,10 @@ export default {
 
     toLink(tag){
       //1用户协议  2隐私政策
-      showMessage('todo')
+      // showMessage('todo')
+      uni.navigateTo({
+          url: '/pages/protocol/protocol?filed=1'
+      })
     }
   }
 }

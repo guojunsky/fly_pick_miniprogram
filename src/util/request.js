@@ -68,11 +68,21 @@ function createHeaders(api, data) {
     })
 }
 
-function request(url, data = {}, autoAlert = true, noProxy = false) {
+function request(url, data = {}, autoAlert = true, noProxy = false, needValid = true) {
     if (!noProxy) {
         const proxy = sassInterceptor.pre(url, data)
         if (proxy) {
             return proxy
+        }
+    }
+
+    if (needValid === true) {
+
+        if (uni.getStorageSync('auth') === '') {
+            uni.navigateTo({
+                url: '/pages/login/index'
+            })
+            return
         }
     }
 
@@ -89,6 +99,9 @@ function request(url, data = {}, autoAlert = true, noProxy = false) {
         "lgMyUid": uni.getStorageSync('lgMyUid') || '' //加盟商主账号id
     }
 
+    if (context.baseParam) {
+        Object.assign(baseInfo, context.baseParam)
+    }
 
     // todo remove 测试账号
     // if(process.env.NODE_ENV === 'development'){
@@ -106,9 +119,7 @@ function request(url, data = {}, autoAlert = true, noProxy = false) {
         ...data
     }))
 
-    if (context.baseParam) {
-        Object.assign(baseInfo, context.baseParam)
-    }
+
     return new Promise(async (resolve, reject) => {
         //修改为云托管 wx.cloud.callContainer
         let params = {

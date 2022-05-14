@@ -91,7 +91,7 @@
                   <p class="product-tt" @click="handlerDetailPage(item)">{{ item.name }}</p>
                   <div class="product-score" @click="handlerCommentPage(item)">
                     <span class="product-score_tt">{{ item.star }}分</span>
-                    <span class="product-score_num">{{ item.commentCount }}条点评</span>
+                    <span class="product-score_num" v-if="globalConfig.needComment===1">{{ item.commentCount }}条点评</span>
                   </div>
                 </div>
 
@@ -221,7 +221,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['city', 'country', 'checkData']),
+    ...mapGetters(['city', 'country', 'checkData', 'globalConfig']),
     dispatcherTypesObj() {
       return Object.keys(this.dispatcherTypes)
     },

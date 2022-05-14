@@ -19,7 +19,7 @@
 						<view class="detail_score">
 							<image class="star_img" v-for="(item,index) in getStar(detail.star)" :key="index" src="../../static/detail/redstar.png"></image>
 							<text class="score" v-if="detail.star">{{detail.star}}</text>
-							<text class="comment_number">{{detail.commentCount}}条点评</text>
+							<text class="comment_number" v-if="globalConfig.needComment===1">{{detail.commentCount}}条点评</text>
 						</view>
 						<view class="detail_score">
 							<text class="txt">服务：{{detail.serviceStar}}分</text>
@@ -116,13 +116,13 @@
 				<view class="intro">
 					<view class="tab_content">
 						<view :class="['tab_item',activeIndex == 0 ? 'active' : '']" @click="handlerIndex(0)">注意事项</view>
-						<view :class="['tab_item',activeIndex == 1 ? 'active' : '']" @click="handlerIndex(1)">评价{{detail.commentCount ? `(${detail.commentCount})` : ''}}</view>
+						<view v-if="globalConfig.needComment===1 " :class="['tab_item',activeIndex == 1 ? 'active' : '']" @click="handlerIndex(1)">评价{{detail.commentCount ? `(${detail.commentCount})` : ''}}</view>
 					</view>
 					<view class="tab_intro" v-show="activeIndex === 0">
 						<rich-text :nodes="detail.introduce | formatRichText"></rich-text>
 					</view>
 				</view>
-				<view class="comment_content" v-show="activeIndex === 1">
+				<view class="comment_content" v-show="activeIndex === 1" v-if="globalConfig.needComment===1 ">
 					<view class="comment_line" v-for="(item,index) in list" :key="index">
 						<view class="comment_user">
 							<view class="comment_left">
@@ -182,7 +182,7 @@
 			couponList
 		},
 		computed: {
-			...mapGetters(['detail', 'city', 'country', 'checkData']),
+			...mapGetters(['detail', 'city', 'country', 'checkData', 'globalConfig']),
 			otherList() {
 				const data = this.detail.surcharges.filter((item) => item.selected == 0 || item.totalPrice <= 0)
 				return data

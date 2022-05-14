@@ -14,7 +14,7 @@ export class SassInterceptor {
         const {
             saasId,
             token
-        } = await sassApi.login('s123456', 's1234567');
+        } = await sassApi.login('9n231byyd2', 'ojx16vc7schlth7bpgf5aize76dsa0fr');
         this.ctx.setCtx(saasId, token)
         const {
             saasConfigInfo

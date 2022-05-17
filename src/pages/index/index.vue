@@ -31,10 +31,12 @@
                     </view>
                     <view class="detail_place">
                         <view :class="[city ? 'from' : 'fromnone']" @click="handlerCityPage">
-                            {{city ? city.cityName : '城市'}}</view>
+                            {{city ? city.cityName : '城市'}}
+                        </view>
                         <image class="center_arrow" src="/static/index/right_arrow.png"></image>
                         <view :class="[country ? 'to' : 'fromnone']" @click="handlerCountryPage">
-                            {{country ? country.cnName : '国家'}}</view>
+                            {{country ? country.cnName : '国家'}}
+                        </view>
                     </view>
                     <view class="look_content" v-if="activeIndex !== 1">
                         <text class="only_txt">只看</text>
@@ -307,6 +309,15 @@
                     uni.navigateTo({
                         url: '../web/index'
                     })
+                } else if (/^miniapp:\/\//.test(link)) {
+                    // 跳转到小程序
+                    const ec = /^miniapp:\/\/([a-z0-9]{10,})/g
+                    const [_, appId] = ec.exec(link)
+                    if (appId) {
+                        uni.navigateToMiniProgram({
+                            appId
+                        })
+                    }
                 } else {
                     uni.navigateTo({
                         url: link

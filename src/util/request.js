@@ -16,7 +16,7 @@ import {
     sassInterceptor
 } from './sassInterceptor'
 // const baseUrl = 'http://sendatek-2gp430wnd7fb8cb3-1304710895.ap-shanghai.app.tcloudbase.com/gateway'
-const baseUrl = 'https://test.sendatek.com/gateway'
+const baseUrl = 'https://api.sendatek.com/gateway'
 
 
 // const baseUrl = 'http://127.0.0.1:7654/gateway/' // mock server

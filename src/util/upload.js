@@ -46,6 +46,7 @@ const upload = async (filePath, callback) => {
 }
 // 计算签名
 var getAuthorization = function (tempdata, options, callback) {
+
     callback({
         XCosSecurityToken: tempdata.token,
         Authorization: CosAuth({
@@ -59,12 +60,14 @@ var getAuthorization = function (tempdata, options, callback) {
 // 上传文件
 var uploadFile = function (filePath, tempdata, callback) {
     var Key = filePath.substr(filePath.lastIndexOf('/') + 1); // 这里指定上传的文件名
-    var signPathname = '/'; // PostObject 接口 Key 是放在 Body 传输，所以请求路径和签名路径是 /
-    if (ForcePathStyle) {
-        // 后缀式请求在签名时用的路径，要包含存储桶名称，具体说明见本文上述“3.后缀式请求”
-        signPathname = '/' + Bucket + '/' + fileRoot;
-    }
+    // var signPathname = '/'; // PostObject 接口 Key 是放在 Body 传输，所以请求路径和签名路径是 /
+    // if (ForcePathStyle) {
+    //     // 后缀式请求在签名时用的路径，要包含存储桶名称，具体说明见本文上述“3.后缀式请求”
+    //     signPathname = '/' + Bucket + '/' + fileRoot;
+    // }
+    const prefix =  'https://cos.' + tempdata.region + '.myqcloud.com/' + tempdata.bucket + '/';
     const prefixUrl = prefix + fileRoot
+    const  signPathname = '/' +  tempdata.bucket + '/' + fileRoot;
     getAuthorization(tempdata, {
         Method: 'POST',
         Pathname: signPathname

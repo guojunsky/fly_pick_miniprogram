@@ -72,7 +72,7 @@
             <view class="line"></view>
             <view class="slogon">
                 <image class="logo" :src="globalConfig.miniLogo"></image>
-                <view class="line_txt">跨境物流，数达全球</view>
+                <view class="line_txt">{{globalConfig.slogan}}</view>
             </view>
         </view>
         <view class="service_content">

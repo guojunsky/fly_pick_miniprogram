@@ -16,12 +16,12 @@
 					<image class="detail_img" mode="center" src="/static/index/map.png"></image>
 					<view class="channel_content">
 						<view class="detail_title">产品名称：{{detail.name}}</view>
-						<view class="detail_score">
+						<view class="detail_score"  v-if="globalConfig.needComment===1">
 							<image class="star_img" v-for="(item,index) in getStar(detail.star)" :key="index" src="../../static/detail/redstar.png"></image>
 							<text class="score" v-if="detail.star">{{detail.star}}</text>
-							<text class="comment_number" v-if="globalConfig.needComment===1">{{detail.commentCount}}条点评</text>
+							<text class="comment_number">{{detail.commentCount}}条点评</text>
 						</view>
-						<view class="detail_score">
+						<view class="detail_score" v-if="globalConfig.needComment===1 ">
 							<text class="txt">服务：{{detail.serviceStar}}分</text>
 							<text class="txt">时效：{{detail.effectiveStar}}分</text>
 							<text class="txt">安全：{{detail.securityStar}}分</text>

@@ -89,9 +89,9 @@
 
                 <div class="product-title">
                   <p class="product-tt" @click="handlerDetailPage(item)">{{ item.name }}</p>
-                  <div class="product-score" @click="handlerCommentPage(item)">
+                  <div class="product-score" @click="handlerCommentPage(item)" v-if="globalConfig.needComment===1">
                     <span class="product-score_tt">{{ item.star }}分</span>
-                    <span class="product-score_num" v-if="globalConfig.needComment===1">{{ item.commentCount }}条点评</span>
+                    <span class="product-score_num" >{{ item.commentCount }}条点评</span>
                   </div>
                 </div>
 
@@ -601,8 +601,9 @@ export default {
 
     &-hd {
       margin: 0 rem(22);
-      height: rem(130);
-      line-height: rem(130);
+      // height: rem(130);
+      // line-height: rem(130);
+      padding: 30rpx 0  0;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -624,8 +625,8 @@ export default {
     }
 
     &-title {
-      height: rem(130);
-      line-height: rem(130);
+      // height: rem(130);
+      // line-height: rem(130);
       display: flex;
       flex-direction: column;
       justify-content: center;

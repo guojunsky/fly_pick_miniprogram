@@ -251,7 +251,7 @@
 					this.$store.commit('sendOrder/setPid', this.detail.id)
 					this.$store.commit('sendOrder/setCurrentProduct', this.detail)
 					uni.navigateTo({
-						url: `/pages/sendOrder/index?showFba=${this.goodsInfo.fba}&pid=${this.detail.id}`
+						url: `/subpackages/sendOrder/index?showFba=${this.goodsInfo.fba}&pid=${this.detail.id}`
 					})
 				})
 			},

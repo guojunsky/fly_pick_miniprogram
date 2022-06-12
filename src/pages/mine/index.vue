@@ -156,7 +156,7 @@
 								icon: 'icon-feedback',
 								name: '投诉反馈',
 								click: () => {
-									this.toMenuItem('/pages/feedback/index')
+									this.toMenuItem('/subpackages/feedback/index')
 								}
 							},
 							{
@@ -167,7 +167,7 @@
 									// const url = encodeURIComponent(link)
 									// uni.setStorageSync('url', url)
 									uni.navigateTo({
-										url: '/pages/protocol/protocol?filed=aboutUs'
+										url: '/subpackages/protocol/protocol?filed=aboutUs'
 									})
 								}
 							}
@@ -179,7 +179,7 @@
 							icon: 'icon-ticket',
 							name: '电子发票',
 							click: () => {
-								this.toMenuItem('/pages/bill/index')
+								this.toMenuItem('/subpackages/bill/index')
 							}
 						},
 						{
@@ -214,7 +214,7 @@
 							icon: 'icon-address',
 							name: '地址管理',
 							click: () => {
-								this.toMenuItem('/pages/address/total')
+								this.toMenuItem('/subpackages/address/total')
 							}
 						},
 						// {icon: 'icon-printer', name: '打印机管理', routePath: ''},
@@ -225,7 +225,7 @@
 							icon: 'icon-feedback',
 							name: '投诉反馈',
 							click: () => {
-								this.toMenuItem('/pages/feedback/index')
+								this.toMenuItem('/subpackages/feedback/index')
 							}
 						},
 						{
@@ -239,7 +239,7 @@
 								// 	url: '../web/index'
 								// })
                                 uni.navigateTo({
-                                	url: '/pages/protocol/protocol?filed=aboutUs'
+                                	url: '/subpackages/protocol/protocol?filed=aboutUs'
                                 })
 							}
 						},
@@ -315,7 +315,7 @@
 						this.chatLoading = false
 						uni.hideLoading()
 						uni.navigateTo({
-							url: `/pages/chat/index?groupId=${FlyIMBusinessGroupId}`
+							url: `/subpackages/chat/index?groupId=${FlyIMBusinessGroupId}`
 						})
 					},
 					fail: (res) => {
@@ -374,7 +374,7 @@
 			toMyCoupon() {
 				// this.toLogin("myCoupon")
 				uni.navigateTo({
-					url: 'myCoupon',
+					url: '/pages/mine/myCoupon',
 					fail(e) {
 						console.log(e)
 					}

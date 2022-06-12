@@ -164,7 +164,7 @@ export default {
       //1用户协议  2隐私政策
       // showMessage('todo')
       uni.navigateTo({
-          url: '/pages/protocol/protocol?filed=1'
+          url: '/subpackages/protocol/protocol?filed=1'
       })
     }
   }

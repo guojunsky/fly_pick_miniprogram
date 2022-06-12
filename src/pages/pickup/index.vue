@@ -354,7 +354,7 @@
 					city: chinaAddress.city
 				}
 				this.getPickUpConfig(pdata, (aid) => {
-					let url = '/pages/userList/index?oid=' + oid + '&aid=' + aid
+					let url = '/subpackages/userList/index?oid=' + oid + '&aid=' + aid
 					if (redispatch) {
 						url += '&redispatch=1'
 					}
@@ -428,19 +428,19 @@
 					this.$store.commit('print/setDeviceInfo', deviceInfo)
 
 					uni.navigateTo({
-						url: `/pages/print/index`,
+						url: `/subpackages/print/index`,
 					})
 					return
 				}
 				uni.navigateTo({
-					url: `/pages/print/deviceList`,
+					url: `/subpackages/print/deviceList`,
 				})
 			},
 			confirmGood(item) { //确认收货
 				this.$store.dispatch('sendOrder/resetSendOrder')
 				this.$store.commit('sendOrder/setConfirmReceiveData', item)
 				uni.navigateTo({
-					url: `/pages/sendOrder/index?fromPage=confirmReceive`
+					url: `/subpackages/sendOrder/index?fromPage=confirmReceive`
 				})
 			},
 			hanlderCall(phone) {

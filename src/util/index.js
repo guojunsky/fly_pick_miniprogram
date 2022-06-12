@@ -41,7 +41,7 @@ export function handlerCheckLogin({
 	} else { //未登录
 		//跳转到登录页面
 		uni.navigateTo({
-			url: '/pages/login/index'
+			url: '/subpackages/login/index'
 		})
 		if (done) done()
 

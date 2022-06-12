@@ -182,13 +182,13 @@
 					mail: email
 				})
 				uni.navigateTo({
-					url: '/pages/success/index'
+					url: '/subpackages/success/index'
 				})
 				this.$store.dispatch('app/toggleEmail', email)
 				this.resendVisible = false
 				if (res.ret_code === '0000') {
 					uni.navigateTo({
-						url: '/pages/success/index'
+						url: '/subpackages/success/index'
 					})
 				}
 			},
@@ -278,7 +278,7 @@
 				}
 				this.$store.dispatch('app/toggleMakeOrder', this.checkOrder)
 				uni.navigateTo({
-					url: '/pages/write/index'
+					url: '/subpackages/write/index'
 				})
 				setTimeout(() => {
 					this.handlerClear()

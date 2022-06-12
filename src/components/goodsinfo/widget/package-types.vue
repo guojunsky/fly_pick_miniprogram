@@ -6,7 +6,7 @@
 
 <script>
 	import slidePopup from '@/components/slide-popup'
-	import modeList from '@/pages/sendOrder/widget/mode-list.vue'
+	import modeList from '@/subpackages/sendOrder/widget/mode-list.vue'
 	export default {
 		props: {
 			show: {

@@ -262,7 +262,7 @@ export default {
     },
     toDeviceList() {
       uni.navigateTo({
-        url: `/pages/print/deviceList`
+        url: `/subpackages/print/deviceList`
       })
     },
     handleWeight(data) {

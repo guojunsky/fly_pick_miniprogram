@@ -174,7 +174,7 @@ import rangeSlider from '@/components/form/range-slider'
 import productEmpty from './empty'
 import {mapGetters} from 'vuex'
 import slidePopup from '@/components/slide-popup'
-import totalPrice from '@/pages/sendOrder/widget/total-price'
+import totalPrice from '@/subpackages/sendOrder/widget/total-price'
 import {showMessage, formatWeight, handlerCheckLogin} from "@/util";
 
 const createDefaultFilterParams = () => {
@@ -442,14 +442,14 @@ export default {
       this.$store.dispatch('app/toggleDetail', item)
       //产品详情页
       uni.navigateTo({
-        url: '../detail/index'
+        url: '/subpackages/detail/index'
       })
     },
     handlerCommentPage(item) {
       this.$store.dispatch('app/toggleComment', item)
       //评论列表
       uni.navigateTo({
-        url: `../commentList/index?pid=${item.id}`
+        url: `/subpackages/commentList/index?pid=${item.id}`
       })
     },
     // 查询产品列表
@@ -555,7 +555,7 @@ export default {
           this.$store.commit('sendOrder/setCurrentProduct', item)
 
           uni.navigateTo({
-            url: `/pages/sendOrder/index?showFba=${this.goodsInfo.fba}&pid=${item.id}`
+            url: `/subpackages/sendOrder/index?showFba=${this.goodsInfo.fba}&pid=${item.id}`
           })
         },
         fail: (e) => {

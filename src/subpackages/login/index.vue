@@ -141,7 +141,7 @@ export default {
     toPage() {
       if (this.isFocus) return
       uni.navigateTo({
-        url: '/pages/login/forgetPassword'
+        url: '/subpackages/login/forgetPassword'
       })
     },
     validPhone(phone) {
@@ -417,7 +417,7 @@ export default {
       //1用户协议  2隐私政策
       // showMessage('todo')
       uni.navigateTo({
-          url: `/pages/protocol/protocol?filed=${tag}`
+          url: `/subpackages/protocol/protocol?filed=${tag}`
       })
     }
   }

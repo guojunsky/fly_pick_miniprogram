@@ -5,7 +5,7 @@ import {createRandomStr, showMessage} from "@/util/index";
 let resCount = 0;
 let isLoading = false;
 
-export function toPayOrder(order, {suc = null, fail = null} = {}) {
+export function toPayOrder(order, {suc = null, fail = null} = {}, type=2) {
     if (isLoading) return
     isLoading = true
     uni.showLoading()
@@ -21,7 +21,7 @@ export function toPayOrder(order, {suc = null, fail = null} = {}) {
         if (res.ret_code === '0000') {
             //todo mock 暂时屏蔽支付，正式环境修改回来
             // toPaidForTest(res.order.id, {suc, fail})
-            toPrePay(res.order.id, {suc, fail})
+            toPrePay(res.order.id, {suc, fail}, type)
         } else {
             isLoading = false
             uni.hideLoading()
@@ -52,7 +52,7 @@ function toPaidForTest(orderNo,{suc = null, fail = null} = {}){
     })
 }
 
-function toPrePay(orderNo, {suc = null, fail = null} = {}) {
+function toPrePay(orderNo, {suc = null, fail = null} = {}, type=2) {
     // console.log(store.state.user.userInfo)
     let userInfo = JSON.parse(uni.getStorageSync('userInfo'));
     //store.state.user.userInfo.openid
@@ -63,6 +63,7 @@ function toPrePay(orderNo, {suc = null, fail = null} = {}) {
         openid: userInfo.openid
     }).then((res) => {
         if (res.ret_code === '0000') {
+            if(type === 2) {
             let {wxpay} = res
             let data = JSON.parse(wxpay)
 
@@ -71,7 +72,7 @@ function toPrePay(orderNo, {suc = null, fail = null} = {}) {
                 {
                     ...data,
                     'success': function (res) {
-                        checkOrder(orderNo, {suc, fail})
+                        checkOrder(orderNo, {suc, fail}, type)
                     },
                     'fail': function (res) {
                         console.log("fail", res)
@@ -87,6 +88,9 @@ function toPrePay(orderNo, {suc = null, fail = null} = {}) {
                         console.log("complete", res)
                     }
                 })
+            }else{
+                checkOrder(orderNo, {suc, fail}, type)
+            }
         } else {
             isLoading = false
             uni.hideLoading()
@@ -98,8 +102,8 @@ function toPrePay(orderNo, {suc = null, fail = null} = {}) {
     })
 }
 
-async function checkOrder(orderNo, {suc = null, fail = null} = {}) {
-    const res = await checkOrderPaid({orderNo, payType: 2, tradeType: 4})
+async function checkOrder(orderNo, {suc = null, fail = null} = {}, type=2) {
+    const res = await checkOrderPaid({orderNo, payType: type, tradeType: 4})
     console.log(res)
     if (res.ret_code === '0000') {
         let {payStatus} = res
@@ -117,7 +121,7 @@ async function checkOrder(orderNo, {suc = null, fail = null} = {}) {
         } else if (payStatus === 1) {
             if (resCount < 5) {
                 setTimeout(() => {
-                    checkOrder(orderNo, {suc, fail});
+                    checkOrder(orderNo, {suc, fail}, type);
                 }, 1000);
             } else {
                 uni.hideLoading()

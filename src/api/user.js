@@ -67,7 +67,9 @@ export const updateLgUserInfoChange = (data) => {
     return request(`com.sendatek.sp.api.league.apis.service.user.LgUserInfoChangeApi`, data)
 }
 
-
+export const getBalance = (data)=>{
+    return request('com.sendatek.sp.api.account.apis.service.UserBalanceGetApi', data)
+}
 
 
 

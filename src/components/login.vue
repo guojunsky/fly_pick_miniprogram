@@ -12,7 +12,7 @@ export default {
   methods: {
     toLogin() {
 
-      uni.navigateTo({url:'/pages/login/index'})
+      uni.navigateTo({url:'/subpackages/login/index'})
 
     }
   },

@@ -163,7 +163,7 @@ export default {
     // 新增或编辑地址
     addAddress(type, item) {
       const id = (type === 2 && item) ? item.id : ''
-      let url = this.isChinaAddress ? `/pages/address/addSender` : `/pages/address/addAddressee`
+      let url = this.isChinaAddress ? `/subpackages/address/addSender` : `/subpackages/address/addAddressee`
       url += `?id=${id}`
 
       uni.navigateTo({

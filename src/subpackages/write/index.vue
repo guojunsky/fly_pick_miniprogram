@@ -168,7 +168,7 @@
 				this.$store.dispatch('app/toggleEmail', pdata.mail)
 				this.updateBillList()
 				uni.navigateTo({
-					url: '/pages/success/index?from=2'
+					url: '/subpackages/success/index?from=2'
 				})
 				
 			}

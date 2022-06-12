@@ -183,6 +183,9 @@
 
 	import customAlert from '@/components/popup/alert'
 	import goodsInfo from '@/components/goodsinfo/goodsinfo.vue'
+		import {
+		getTransitStoreList
+	} from "@/api/config";
 	import {
 		defaultCheckPriceFilterParams
 	} from '@/store/modules/sendOrder'
@@ -321,9 +324,9 @@
 					name: '自送到仓库',
 					value: 2
 				}]
-				if (this.fromPage != 'confirmReceive') { //代客下单，寄件方式只有上门取件
-					list = []
-				}
+				// if (this.fromPage != 'confirmReceive') { //代客下单，寄件方式只有上门取件
+				// 	list = []
+				// }
 				// const list = [{name: '国内快递到仓库', value: 1}, {name: '自送到仓库', value: 2}]
 				const {
 					pickupConfig
@@ -953,7 +956,7 @@
 			toCustomsPage() {
 				uni.navigateTo({
 					// url: `customs`
-					url: `/pages/sendOrder/customs`,
+					url: `/subpackages/sendOrder/customs`,
 				})
 			},
 			// 附加费
@@ -972,14 +975,14 @@
 				} = currentProduct
 				uni.navigateTo({
 					// url: `additionalCharge?pid=${id}`
-					url: `/pages/sendOrder/additionalCharge?pid=${id}`,
+					url: `/subpackages/sendOrder/additionalCharge?pid=${id}`,
 				})
 			},
 			// 保价
 			toValueInsurance() {
 				uni.navigateTo({
 					// url: `valueInsurance`,
-					url: `/pages/sendOrder/valueInsurance`,
+					url: `/subpackages//sendOrder/valueInsurance`,
 				})
 			},
 			// 渠道产品页面
@@ -1011,7 +1014,7 @@
 
 				uni.navigateTo({
 					// url: `storehouse?pid=${id}`,
-					url: `/pages/sendOrder/storehouse?pid=${id}`,
+					url: `/subpackages/sendOrder/storehouse?pid=${id}`,
 					success: res => {},
 					fail: (e) => {
 						console.log(e)
@@ -1086,7 +1089,7 @@
 				// const url = encodeURIComponent(link)
 				// uni.setStorageSync('url', url)
 				uni.navigateTo({
-					url: `/pages/protocol/protocol?filed=order`
+					url: `/subpackages/protocol/protocol?filed=order`
 				})
 			},
 			async submit() {

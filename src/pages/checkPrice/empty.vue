@@ -65,7 +65,7 @@ export default {
           this.chatLoading = false
           uni.hideLoading()
           uni.navigateTo({
-            url: `/pages/chat/index?groupId=${FlyIMBusinessGroupId}`
+            url: `/subpackages/chat/index?groupId=${FlyIMBusinessGroupId}`
           })
         },
         fail: (res) => {

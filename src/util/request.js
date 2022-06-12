@@ -80,7 +80,7 @@ function request(url, data = {}, autoAlert = true, noProxy = false, needValid = 
 
         if (uni.getStorageSync('auth') === '') {
             uni.navigateTo({
-                url: '/pages/login/index'
+                url: '/subpackages/login/index'
             })
             return
         }

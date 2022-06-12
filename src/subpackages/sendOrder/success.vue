@@ -193,7 +193,7 @@ export default {
     },
     toDetail() {
       uni.navigateTo({
-        url: `/pages/orderDetail/index?oid=${this.orderId}`
+        url: `/subpackages/orderDetail/index?oid=${this.orderId}`
       })
     },
     updateCheckPage() {

@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import CouponList from '../sendOrder/widget/coupon-list'
+import CouponList from '@/subpackages/sendOrder/widget/coupon-list'
 import {
   getMyCouponList
 } from '@/api/coupon'

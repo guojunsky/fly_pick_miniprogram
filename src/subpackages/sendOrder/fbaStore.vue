@@ -46,7 +46,7 @@
 
 <script>
 import {getFbaStoreList} from '@/api/config'
-import addressIndex from '@/pages/address/index'
+import addressIndex from '@/subpackages/address/index'
 
 export default {
   name: "fbaStore",

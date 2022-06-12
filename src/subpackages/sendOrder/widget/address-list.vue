@@ -70,30 +70,30 @@ export default {
 
       if (type === 2 && this.goodsInfo && this.goodsInfo.goodsType == 2 && this.fbaval === 1) {
         uni.navigateTo({
-          url: `/pages/sendOrder/fbaStore`
+          url: `/subpackages/sendOrder/fbaStore`
         })
         return
       }
       uni.navigateTo({
-        url: `/pages/address/index?type=${type}&choose=${this.readonly ? '' : '1'}&defaultId=${address && address.id}`
+        url: `/subpackages/address/index?type=${type}&choose=${this.readonly ? '' : '1'}&defaultId=${address && address.id}`
       })
     },
     toSenderAddress() {
       const {id = ''} = this.sender || {}
       uni.navigateTo({
-        url: `/pages/address/addSender?id=${id}&choose=1`
+        url: `/subpackages/address/addSender?id=${id}&choose=1`
       })
     },
     toReceiverAddress() {
       if (this.goodsInfo && this.goodsInfo.goodsType == 2 && this.fbaval === 1) {
         uni.navigateTo({
-          url: `/pages/sendOrder/fbaStore`
+          url: `/subpackages/sendOrder/fbaStore`
         })
         return
       }
       const {id = ''} = this.receiver || {}
       uni.navigateTo({
-        url: `/pages/address/addAddressee?id=${id}&choose=1`
+        url: `/subpackages/address/addAddressee?id=${id}&choose=1`
       })
     }
 

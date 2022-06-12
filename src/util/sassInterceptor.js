@@ -11,23 +11,26 @@ export class SassInterceptor {
     }
 
     async login() {
-        const {
-            saasId,
-            token
-        } = await sassApi.login('qjmdk7bjwy', 'n2rg5tj6dxfqockn74f7hqtuwmjo8sfx');
-        this.ctx.setCtx(saasId, token)
-        const {
-            saasConfigInfo
-        } = await sassApi.getConfig();
-        await this.invoke()
-        return saasConfigInfo
+        const ext = wx.getExtConfigSync()
+        if (ext) {
+            const {
+                saasId,
+                token
+            } = await sassApi.login(ext.apiId, ext.apiKey);
+            this.ctx.setCtx(saasId, token)
+            const {
+                saasConfigInfo
+            } = await sassApi.getConfig();
+            await this.invoke()
+            return saasConfigInfo
+        }
     }
     pre(url, param) {
-       
+
         if (this.ctx.isLogin()) {
             return false
         }
-         console.log('收到拦截 返回临时的promise....', url)
+        console.log('收到拦截 返回临时的promise....', url)
         return this.addRequest(url, param)
     }
     addRequest(url, param) {

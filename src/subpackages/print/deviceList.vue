@@ -96,7 +96,7 @@ export default {
       uni.setStorageSync("deviceInfo", JSON.stringify(deviceData[0]))
       this.$store.commit('print/setDeviceInfo', deviceData[0])
       uni.navigateTo({
-        url: `./index?deviceId=${deviceId}`
+        url: `/subpackages/print/index?deviceId=${deviceId}`
       })
     },
     handleBlue() {

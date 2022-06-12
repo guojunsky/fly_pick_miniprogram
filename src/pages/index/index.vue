@@ -103,7 +103,7 @@
 </template>
 
 <script>
-    import navtitle from '../../components/header/header.vue'
+    import navtitle from '@/components/header/header.vue'
     import slidePopup from '@/components/slide-popup'
     import customDialog from '@/components/popup/dialog'
 
@@ -228,7 +228,7 @@
                     icon: '/static/index/icon_xiadan.png',
                     width: '45rpx',
                     height: '51rpx',
-                    url: `/pages/sendOrder/index?showFba=1`
+                    url: `/subpackages/sendOrder/index?showFba=1`
                 }, {
                     name: '大货询价',
                     icon: '/static/index/icon_xunj.png',
@@ -290,12 +290,12 @@
             },
             handlerCountryPage() {
                 uni.navigateTo({
-                    url: '../country/index'
+                    url: '/pages/country/index'
                 })
             },
             handlerCityPage() {
                 uni.navigateTo({
-                    url: '../city/index'
+                    url: '/pages/city/index'
                 })
             },
             handlerBanner(link) {
@@ -307,7 +307,7 @@
                     const url = encodeURIComponent(link)
                     uni.setStorageSync('url', url)
                     uni.navigateTo({
-                        url: '../web/index'
+                        url: '/subpackages/web/index'
                     })
                 } else if (/^miniapp:\/\//.test(link)) {
                     // 跳转到小程序
@@ -336,7 +336,7 @@
                         this.chatLoading = false
                         uni.hideLoading()
                         uni.navigateTo({
-                            url: `/pages/chat/index?groupId=${groupId}`
+                            url: `/subpackages/chat/index?groupId=${groupId}`
                         })
                     },
                     fail: (res) => {
@@ -375,7 +375,7 @@
                     // this.handleIM(FlyIMMajorGroupId)
                 } else {
                     if (!menu.url) return
-                    if (menu.url.indexOf('/pages/sendOrder/index') > -1) {
+                    if (menu.url.indexOf('/subpackages/sendOrder/index') > -1) {
                         //直接下单登录判断
                         this.toLogin(() => {
                             this.$store.dispatch('sendOrder/resetSendOrder')

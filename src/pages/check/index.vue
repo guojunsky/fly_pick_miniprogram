@@ -86,6 +86,8 @@
 			<view class="login_btn" @click="toLogin">登录账户</view>
 		</view>
 		<cancel-modal :order-id="orderId" ref="cancelmodal" @sure="handlerCancelSure"></cancel-modal>
+		<PayType :visible.sync="payVis" @close="payVis = false" @pay="handlePay" />
+
 	</view>
 </template>
 
@@ -110,6 +112,9 @@
 		orderStatusObj,
 		orderProcess
 	} from '../../common/helper.js';
+import { getBalance } from '@/api/user.js'
+import payType from '@/components/payType'
+
 
 	export default {
 		filters: {
@@ -127,6 +132,7 @@
 				searchValue: '', //搜索key
 				orderStatusObj,
 				orderProcess,
+				payVis: false,
 				statuslist: [{
 						name: '全部',
 						number: 0,
@@ -160,7 +166,8 @@
 		},
 		components: {
 			cancelModal,
-			emptyBox
+			emptyBox,
+			payType
 		},
 		computed: {
 			...mapGetters(['login','userInfo', 'globalConfig']),
@@ -248,22 +255,56 @@
 			canComplain(orderStatus) {
 				return orderStatus != 600 && orderStatus != 999
 			},
-			hanlderPay(order) {
-				toPayOrder(order, {
+			// hanlderPay(order) {
+			// 	toPayOrder(order, {
+			// 		suc: () => {
+			// 			this.statuslist[this.status].cursor = 0;
+			// 			this.getOrderList()
+			// 		}
+			// 	})
+			// },
+		async hanlderPay(order) {
+			const { balance } = await getBalance()
+			if(balance>0){
+				this.currentOrder = order
+				this.payVis = true
+			}else{
+				toPayOrder(order,
+				{
 					suc: () => {
 						this.statuslist[this.status].cursor = 0;
 						this.getOrderList()
+					}}, 2)
+			}
+			// if()
+			// toPayOrder(order, {
+			// 	suc: () => {
+			// 		this.statuslist[this.status].cursor = 0;
+			// 		this.getOrderList()
+			// 	}
+			// })
+
+		},
+		handlePay(code) {
+			this.payVis = false
+			// if (code === 2) {
+				toPayOrder(this.currentOrder, {
+					suc: () => {
+						this.statuslist[this.status].cursor = 0;
+						this.getOrderList()
+						this.currentOrder = null
 					}
-				})
-			},
+				}, code)
+			// }
+		},
 			handlerOrderDetail(id) {
 				uni.navigateTo({
-					url: '../orderDetail/index?oid=' + id
+					url: '/subpackages/orderDetail/index?oid=' + id
 				})
 			},
 			handlerComment(id, pid) {
 				uni.navigateTo({
-					url: `../comment/index?oid=${id}&pid=${pid}`
+					url: `/subpackages/comment/index?oid=${id}&pid=${pid}`
 				})
 			},
 			handlerSearch() {
@@ -309,12 +350,12 @@
 				this.$store.commit('address/setSelectAboardAddress', item.queryVO.internationalAddress)
 				this.$store.commit('sendOrder/setCurrentProduct', item.queryVO)
 				uni.navigateTo({
-					url: `/pages/sendOrder/index?showFba=${goodsInfo.fba}&pid=${pid}&fromPage=againOrder`
+					url: `/subpackages/sendOrder/index?showFba=${goodsInfo.fba}&pid=${pid}&fromPage=againOrder`
 				})
 			},
 			handlerFeedback(oid) {
 				uni.navigateTo({
-					url: '../orderFeedback/index?oid=' + oid
+					url: '/subpackages/orderFeedback/index?oid=' + oid
 				})
 			},
 			hanlderToLower() {

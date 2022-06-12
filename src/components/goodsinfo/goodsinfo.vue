@@ -206,7 +206,7 @@
 					this.$emit('close');
 					//查价结果页
 					uni.navigateTo({
-						url: '../../pages/checkPrice/index'
+						url: '/pages/checkPrice/index'
 					})
 				}
 			},

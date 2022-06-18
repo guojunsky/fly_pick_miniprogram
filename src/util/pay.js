@@ -58,7 +58,7 @@ function toPrePay(orderNo, {suc = null, fail = null} = {}, type=2) {
     //store.state.user.userInfo.openid
     prepayment({
         orderNo,
-        payType: 2,
+        payType: type,
         tradeType: 4,
         openid: userInfo.openid
     }).then((res) => {
@@ -105,6 +105,11 @@ function toPrePay(orderNo, {suc = null, fail = null} = {}, type=2) {
 async function checkOrder(orderNo, {suc = null, fail = null} = {}, type=2) {
     const res = await checkOrderPaid({orderNo, payType: type, tradeType: 4})
     console.log(res)
+    if(res.ret_code === '3012'){
+        uni.hideLoading()
+        if (suc) suc()
+        return
+    }
     if (res.ret_code === '0000') {
         let {payStatus} = res
         // 0 未发起支付；1 支付中；2 支付成功；3 取消；4 付款超时

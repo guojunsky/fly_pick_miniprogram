@@ -369,12 +369,12 @@
 
 			},
 			toUserPage() {
-				this.toLogin('userDetail', this.login)
+				this.toLogin('/subpackages/mine/userDetail', this.login)
 			},
 			toMyCoupon() {
 				// this.toLogin("myCoupon")
 				uni.navigateTo({
-					url: '/pages/mine/myCoupon',
+					url: '/subpackages/mine/myCoupon',
 					fail(e) {
 						console.log(e)
 					}
@@ -387,7 +387,7 @@
 						console.log("登录成功")
 						if (immediatelyJump) {
 							this.handleToPage(path)
-						} else if (path == 'userDetail') {
+						} else if (path == '/subpackages/mine/userDetail') {
 							//登录完成，重新获取优惠券数据
 							this.$store.dispatch('coupon/getAvailableCouponList')
 						}

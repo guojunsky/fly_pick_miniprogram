@@ -16,7 +16,7 @@ import {
     sassInterceptor
 } from './sassInterceptor'
 // const baseUrl = 'http://sendatek-2gp430wnd7fb8cb3-1304710895.ap-shanghai.app.tcloudbase.com/gateway'
-const baseUrl = 'https://test-sp.sendatek.com/gateway'
+const baseUrl = 'https://api.sendatek.com/gateway'
 
 
 // const baseUrl = 'http://127.0.0.1:7654/gateway/' // mock server
@@ -133,10 +133,13 @@ function request(url, data = {}, autoAlert = true, noProxy = false, needValid = 
                 const data = res.data
                 console.log(`${url}  success`, res)
                 if (autoAlert) {
-                    if (data.ret_code === '0000') {
+                    if (data.ret_code === '0000' || data.ret_code ==='3012') {
                         resolve(data)
                     } else {
-                        showMessage(data.ret_msg)
+                        setTimeout(()=>{
+                            showMessage(data.ret_msg)
+
+                        }, 500)
                         reject(data)
                     }
                 } else {

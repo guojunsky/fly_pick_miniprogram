@@ -53,6 +53,9 @@ export default {
     visible(v) {
       if (v) {
         this.getBalance()
+        // uni.hideTabBar()
+      }else{
+        // uni.showTabBar()
       }
     }
   }
@@ -60,6 +63,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.type-list{
+  padding-bottom: 100rpx
+}
 .type {
   display: flex;
   align-items: center;

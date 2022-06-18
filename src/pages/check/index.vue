@@ -255,44 +255,45 @@ import payType from '@/components/payType'
 			canComplain(orderStatus) {
 				return orderStatus != 600 && orderStatus != 999
 			},
-			// hanlderPay(order) {
-			// 	toPayOrder(order, {
-			// 		suc: () => {
-			// 			this.statuslist[this.status].cursor = 0;
-			// 			this.getOrderList()
-			// 		}
-			// 	})
-			// },
-		async hanlderPay(order) {
-			const { balance } = await getBalance()
-			if(balance>0){
-				this.currentOrder = order
-				this.payVis = true
-			}else{
-				toPayOrder(order,
-				{
+			hanlderPay(order) {
+				toPayOrder(order, {
 					suc: () => {
 						this.statuslist[this.status].cursor = 0;
 						this.getOrderList()
-					}}, 2)
-			}
-			// if()
-			// toPayOrder(order, {
-			// 	suc: () => {
-			// 		this.statuslist[this.status].cursor = 0;
-			// 		this.getOrderList()
-			// 	}
-			// })
+					}
+				}, 2)
+			},
+		// async hanlderPay(order) {
+		// 	const { balance } = await getBalance()
+		// 	if(balance>0){
+		// 		this.currentOrder = order
+		// 		this.payVis = true
+		// 	}else{
+		// 		toPayOrder(order,
+		// 		{
+		// 			suc: () => {
+		// 				this.statuslist[this.status].cursor = 0;
+		// 				this.getOrderList()
+		// 			}}, code)
+		// 	}
+		// 	// if()
+		// 	// toPayOrder(order, {
+		// 	// 	suc: () => {
+		// 	// 		this.statuslist[this.status].cursor = 0;
+		// 	// 		this.getOrderList()
+		// 	// 	}
+		// 	// })
 
-		},
+		// },
 		handlePay(code) {
-			this.payVis = false
 			// if (code === 2) {
 				toPayOrder(this.currentOrder, {
 					suc: () => {
 						this.statuslist[this.status].cursor = 0;
 						this.getOrderList()
 						this.currentOrder = null
+		      	this.payVis = false
+
 					}
 				}, code)
 			// }
@@ -530,7 +531,7 @@ import payType from '@/components/payType'
 		flex: 1;
 		flex-direction: column;
 		overflow-y: auto;
-		padding-bottom: 20rpx;
+		padding-bottom: 120rpx;
 	}
 
 	.list_item {

@@ -138,6 +138,7 @@ export default {
 			priceDetails: [],
 			surcharges: [],
 			vas: [],
+			payVis: false,
 			couponAmount: 0,
 			detail: {
 				chinaAddress: {},
@@ -153,54 +154,54 @@ export default {
 		this.getDetail();
 	},
 	methods: {
-		async hanlderPay(order) {
-			const { balance } = await getBalance()
-			if (balance > 0) {
-				this.currentOrder = order
-				this.payVis = true
-			} else {
-				toPayOrder(order,
-					{
-						suc: () => {
-							// this.statuslist[this.status].cursor = 0;
-							// this.getOrderList()
-							this.updateCheckPage()
-							this.getDetail()
-						}
-					}, 2)
-			}
-			// if()
-			// toPayOrder(order, {
-			// 	suc: () => {
-			// 		this.statuslist[this.status].cursor = 0;
-			// 		this.getOrderList()
-			// 	}
-			// })
+		// async hanlderPay(order) {
+		// 	const { balance } = await getBalance()
+		// 	if (balance > 0) {
+		// 		this.currentOrder = order
+		// 		this.payVis = true
+		// 	} else {
+		// 		toPayOrder(order,
+		// 			{
+		// 				suc: () => {
+		// 					// this.statuslist[this.status].cursor = 0;
+		// 					// this.getOrderList()
+		// 					this.updateCheckPage()
+		// 					this.getDetail()
+		// 				}
+		// 			}, 2)
+		// 	}
+		// 	// if()
+		// 	// toPayOrder(order, {
+		// 	// 	suc: () => {
+		// 	// 		this.statuslist[this.status].cursor = 0;
+		// 	// 		this.getOrderList()
+		// 	// 	}
+		// 	// })
 
-		},
-		handlePay(code) {
-			this.payVis = false
-			// if (code === 2) {
-			toPayOrder(this.currentOrder, {
-				suc: () => {
-					// this.statuslist[this.status].cursor = 0;
-					this.updateCheckPage()
-					this.getDetail()
-					// this.getOrderList()
-					this.currentOrder = null
-				}
-			}, code)
-			// }
-		},
-		// hanlderPay(order) {
-		// 	toPayOrder(order, {
+		// },
+		// handlePay(code) {
+		// 	this.payVis = false
+		// 	// if (code === 2) {
+		// 	toPayOrder(this.currentOrder, {
 		// 		suc: () => {
-		// 			console.log("支付成功")
+		// 			// this.statuslist[this.status].cursor = 0;
 		// 			this.updateCheckPage()
 		// 			this.getDetail()
+		// 			// this.getOrderList()
+		// 			this.currentOrder = null
 		// 		}
-		// 	})
+		// 	}, code)
+		// 	// }
 		// },
+		hanlderPay(order) {
+			toPayOrder(order, {
+				suc: () => {
+					console.log("支付成功")
+					this.updateCheckPage()
+					this.getDetail()
+				}
+			},2)
+		},
 		handlerClip(data) {
 			uni.setClipboardData({
 				data,

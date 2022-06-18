@@ -44,24 +44,25 @@
       "style": {
         "navigationBarTitleText": "查价结果页"
       }
-    },
-    {
-      "path": "pages/mine/userDetail",
-      "style": {
-        "navigationBarTitleText": "基本资料"
-      }
-    },
-    {
-      "path": "pages/mine/myCoupon",
-      "style": {
-        "navigationBarTitleText": "我的优惠券"
-      }
     }
+ 
   ],
   "subPackages": [
     {
       "root": "subpackages",
       "pages": [
+        {
+          "path": "mine/userDetail",
+          "style": {
+            "navigationBarTitleText": "基本资料"
+          }
+        },
+        {
+          "path": "mine/myCoupon",
+          "style": {
+            "navigationBarTitleText": "我的优惠券"
+          }
+        },
         {
           "path": "web/index",
           "style": {

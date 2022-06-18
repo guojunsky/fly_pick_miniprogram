@@ -7,7 +7,7 @@ export const ConfigDataListApi = () => {
 
 // 中转仓列表
 export function getTransitStoreList() {
-    return request('com.sendatek.sp.api.config.apis.service.TransitStoreListApi')
+    return request('com.sendatek.sp.api.product.apis.ProductTransitStoreListApi')
 }
 
 // fba仓库

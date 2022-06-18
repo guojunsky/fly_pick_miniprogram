@@ -35,7 +35,7 @@
     }
   },
   {
-    "url": "com.sendatek.sp.api.config.apis.service.TransitStoreListApi",
+    "url": "com.sendatek.sp.api.product.apis.ProductTransitStoreListApi",
     "response": {
       "ret_code": "string",
       "ret_msg": "string",

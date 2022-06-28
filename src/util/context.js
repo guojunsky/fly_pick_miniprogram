@@ -4,6 +4,11 @@ export class Context {
         this.saasToken = saasToken
     }
 
+    setConfig(config){
+        this.config = config
+    }
+ 
+
     isLogin() {
         return this.saasId && this.saasToken
     }
@@ -19,7 +24,8 @@ export class Context {
         } = this
         return {
             saasId,
-            saasToken
+            saasToken,
+            channel:  this.config && this.config.miniAppId
         }
     }
 

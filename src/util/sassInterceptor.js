@@ -21,6 +21,7 @@ export class SassInterceptor {
             const {
                 saasConfigInfo
             } = await sassApi.getConfig();
+            this.ctx.setConfig(saasConfigInfo)
             await this.invoke()
             return saasConfigInfo
         }

@@ -122,7 +122,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['login', 'userInfo']),
+
+    ...mapGetters(['login', 'userInfo', 'globalConfig']),
     isRegisterDisabled() {
       return !this.r.phone || !this.r.vercode || !this.r.password
     }
@@ -338,7 +339,7 @@ export default {
           if (resc.code) {
             wxLogin({
               code: resc.code,
-              appid: appId
+              appid:  this.globalConfig.miniAppId
             }).then(res => {
               if (done) done()
               if (res.ret_code == '0000') {

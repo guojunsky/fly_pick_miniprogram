@@ -35,7 +35,7 @@ import {wxDecryptLogin, updateUser, wxLogin} from '@/api/user';
 import {showMessage, updateUserInfo} from "@/util";
 import store from "@/store";
 import {appId} from "@/util/common";
-
+import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
@@ -45,6 +45,10 @@ export default {
       hid2: true
     }
   },
+  computed: {
+  ...mapGetters(['globalConfig']),
+
+  },
   onLoad(option) {
     //调用登录接口，判断用户是否有头像及昵称
     uni.login({
@@ -53,7 +57,7 @@ export default {
         if (resc.code) {
           wxLogin({
             code: resc.code,
-            appid: appId
+            appid:  this.globalConfig.miniAppId
           }).then(res => {
 
             if (res.ret_code == '0000') {

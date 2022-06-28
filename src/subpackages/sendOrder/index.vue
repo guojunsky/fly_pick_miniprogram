@@ -906,10 +906,11 @@
 			},
 			async setDefaultStore() {
 				const params = {
-					pid: this.pid
+					pid: this.pid,
+					chinaAddress: this.senderAddress
 				}
 				const {
-					stores
+					list:stores
 				} = await getTransitStoreList(params)
 				if (Array.isArray(stores) && stores.length) {
 					const current = stores[0]

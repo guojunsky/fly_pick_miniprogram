@@ -59,7 +59,7 @@ export default {
   methods: {
     async getList() {
       const params = {pid: this.pid}
-      const {stores} = await getTransitStoreList(params)
+      const {list: stores} = await getTransitStoreList(params)
       if (Array.isArray(stores)) {
         this.list = stores
       }

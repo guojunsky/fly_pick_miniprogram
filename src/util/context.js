@@ -25,7 +25,7 @@ export class Context {
         return {
             saasId,
             saasToken,
-            channel:  this.config && this.config.miniAppId
+            channel:  this.config && this.config.miniPickAppId
         }
     }
 

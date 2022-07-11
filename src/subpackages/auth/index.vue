@@ -57,7 +57,7 @@ export default {
         if (resc.code) {
           wxLogin({
             code: resc.code,
-            appid:  this.globalConfig.miniAppId
+            appid:  this.globalConfig.miniPickAppId
           }).then(res => {
 
             if (res.ret_code == '0000') {
